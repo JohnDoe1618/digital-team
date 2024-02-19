@@ -8,11 +8,11 @@
             effect="fade"
             class="swiper swiper-fade"
         >   
-            <swiper-slide class="swiper-slide">Slide 1</swiper-slide>
-            <swiper-slide class="swiper-slide">Slide 2</swiper-slide>
-            <swiper-slide class="swiper-slide">Slide 3</swiper-slide>
-            <swiper-slide class="swiper-slide">Slide 4</swiper-slide>
-            <swiper-slide class="swiper-slide">Slide 5</swiper-slide>
+            <swiper-slide class="swiper-slide">About team</swiper-slide>
+            <swiper-slide class="swiper-slide">Team</swiper-slide>
+            <swiper-slide class="swiper-slide">Our products</swiper-slide>
+            <swiper-slide class="swiper-slide">More</swiper-slide>
+            <swiper-slide class="swiper-slide">Deal</swiper-slide>
         </swiper>
     </div>
 </template>
@@ -38,6 +38,7 @@ function prev() {
     swiperRef.value.slidePrev();
 }
 
+// тупо стандартная дебоунс функция
 function debounce(func, delay) {
     let timer;
     return function() {
@@ -50,8 +51,8 @@ function debounce(func, delay) {
     }
 }
 
-const debouncedNext = debounce(next, 200); // Ограничение на 2 секунды для перелистывания вперед
-const debouncedPrev = debounce(prev, 200); // Ограничение на 2 секунды для перелистывания назад
+const debouncedNext = debounce(next, 200);
+const debouncedPrev = debounce(prev, 200);
 
 onMounted(() => {
     mainRef.value.addEventListener('wheel', function(event) {
@@ -89,6 +90,7 @@ onMounted(() => {
     padding: 0;
     margin: 0;
     color: white;
+    font-size: 30px;
 }
 
 .swiper {
