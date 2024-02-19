@@ -1,6 +1,7 @@
 /* eslint-disable */
 <template>
     <div ref="mainRef" class="main_class">
+        <div class="bg-blur-img"></div>
         <swiper 
             ref="swiperRef" 
             @swiper="setSwiper" 
@@ -81,28 +82,49 @@ onMounted(() => {
 }
 
 .main_class {
+    position: relative;
     width: 100vw;
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: rgb(0, 0, 0);
-    padding: 0;
-    margin: 0;
     color: white;
     font-size: 30px;
+    padding: 20px;
+}
+
+.bg-blur-img {
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    background-image: url(../src/assets/01.jpg);  
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    filter: blur(30px); /* Размытие картинки */
+
 }
 
 .swiper {
-    height: 100vh;
+    height: 95vh;
+    border-radius: 15px;
 }
 
 .swiper-slide {
-    height: 100vh;
+    height: 100%;
+    width: 100vw;
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
+    background-color: black;
+    opacity: 0.8;
+    backdrop-filter: blur(200px);
+    z-index: 2;
+    border-radius: 15px;
+
 }
 
 </style>
