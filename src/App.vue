@@ -3,19 +3,17 @@
     <div ref="mainRef" class="main_class">
         <div class="bg-blur-img"></div>
         <swiper 
-            ref="swiperRef" 
-            @swiper="setSwiper" 
-            direction="vertical"
-            effect="fade"
-            class="swiper swiper-fade"
+        ref="swiperRef" 
+        @swiper="setSwiper" 
+        direction="vertical"
+        effect="fade"
+        class="swiper swiper-fade"
         >   
-            <swiper-slide class="swiper-slide">About team</swiper-slide>
-            <swiper-slide class="swiper-slide">Team</swiper-slide>
-            <swiper-slide class="swiper-slide">Our products</swiper-slide>
-            <swiper-slide class="swiper-slide">More</swiper-slide>
-            <swiper-slide class="swiper-slide">Deal</swiper-slide>
-        </swiper>
-    </div>
+                <swiper-slide class="swiper-slide" v-for="(slide, index) in slides" :key="index">
+                    {{ slide }}
+                </swiper-slide>
+            </swiper>
+        </div>
 </template>
 
 <script setup>
@@ -26,7 +24,7 @@ import "swiper/css/effect-fade"
 
 const swiperRef = ref(null);
 const mainRef = ref(null);
-
+const slides = ["About team", "Team", "Our products", "More", "Deal"]
 const setSwiper = (swiper) => {
     swiperRef.value = swiper
 }
@@ -40,29 +38,31 @@ function prev() {
 }
 
 // тупо стандартная дебоунс функция
-function debounce(func, delay) {
-    let timer;
-    return function() {
-        const context = this;
-        const args = arguments;
-        clearTimeout(timer);
-        timer = setTimeout(() => {
-            func.apply(context, args);
-        }, delay);
-    }
-}
+// function debounce(func, delay) {
+//     let timer;
+//     return function() {
+//         const context = this;
+//         const args = arguments;
+//         clearTimeout(timer);
+//         timer = setTimeout(() => {
+//             func.apply(context, args);
+//         }, delay);
+//     }
+// }
 
-const debouncedNext = debounce(next, 200);
-const debouncedPrev = debounce(prev, 200);
+// const debouncedNext = debounce(next, 200);
+// const debouncedPrev = debounce(prev, 200);
 
 onMounted(() => {
     mainRef.value.addEventListener('wheel', function(event) {
         if (event.deltaY > 0) {
             console.log('Событие колеса мыши вниз');
-            debouncedNext();
+            // debouncedNext();
+            next()
         } else if (event.deltaY < 0) {
             console.log('Событие колеса мыши вверх');
-            debouncedPrev();
+            // debouncedPrev();
+            prev()
         }
     });
 })
@@ -125,6 +125,13 @@ onMounted(() => {
     z-index: 2;
     border-radius: 15px;
 
+}
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 0.5s;
+}
+.fade-enter, .fade-leave-to {
+  opacity: 0;
 }
 
 </style>
