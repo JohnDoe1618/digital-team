@@ -4,19 +4,19 @@
 
         <div class="main-container">
             <div class="glitch" title="Digital Artifact .inc">Digital Artifact .inc</div>
-            <div class="subtitle" title="">Our developers it's your digital future</div>
+            <div class="subtitle" title="" style="margin-top: 20px;">Решения высокого качества для вашего успеха</div>
 
             <div class="about-text">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum dolor perspiciatis aliquid exercitationem necessitatibus ipsam fuga quos. Sapiente voluptatem modi sit possimus minus quis nobis temporibus, harum debitis, commodi quas.
+              Добро пожаловать! Мы команда талантливых разработчиков, специализирующихся на создании превосходного программного обеспечения. Мы разрабатываем веб-сайты, мобильные приложения, CLI программы и административные панели на различных языках программирования. Доверьте нам ваш проект, и мы превратим вашу идею в реальность с помощью инновационных технологий и высокого профессионализма.
             </div>
 
             <div class="button-container">
                <div class="button">
-                <h3>GO DEAL</h3>
+                <h3>Заключить сделку</h3>
                </div>
                <div class="button">
                 <img src="../assets/icons/github.png" class="icon-github" alt="">
-                <a href="https://github.com/SystemsFailure" style="text-decoration: none;"><h3 style="margin-left: 20px;">OPEN GITHUB</h3></a>
+                <a href="https://github.com/SystemsFailure" style="text-decoration: none;"><h3 style="margin-left: 20px;">Открыть исходники на GITHUB</h3></a>
                 <!-- Here was icon github -->
                </div>
             </div>
@@ -29,7 +29,7 @@
 
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 @import url('https://fonts.googleapis.com/css?family=Fira+Mono:400');
 
 .section {
@@ -64,6 +64,7 @@
     font-family: 'Fira Mono', monospace;
     letter-spacing: -7px;
     z-index: 1;
+    background-color: rgba($color: #000000, $alpha: .2);
 }
 
 .button-container {
