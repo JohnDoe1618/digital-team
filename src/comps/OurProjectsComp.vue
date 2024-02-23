@@ -1,6 +1,7 @@
 <template>
     <div class="section">
-        Our projects
+        <img src="../assets/images/4.jpg" alt="">
+        
     </div>
 </template>
 
@@ -9,8 +10,19 @@
 </script>
 <style scoped>
 .section {
+    position: relative;
     width: 100vw;
     height: 100vh;
-    background-color: yellow;
+}
+
+img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+    transform: rotate(180deg);
 }
 </style>
