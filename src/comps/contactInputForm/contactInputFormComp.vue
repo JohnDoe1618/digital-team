@@ -29,8 +29,7 @@
             class="contact-form__submit-btn"
             rounded="xs"
             color="rgba(17, 17, 17, 0.7)"
-            style="color: white; font-size: 0.75rem;"
-            >Отправить текст</v-btn>
+            >Отправить</v-btn>
         </v-form>
 
         <!-- ??????????  -->
@@ -72,9 +71,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 80%;
+    width: 60%;
     color: white;
-
 }
 .contact-form {
     position: relative;
@@ -86,6 +84,13 @@
 .contact-form__submit-btn {
     margin: 0 1rem 0 auto;
     border: 1px solid white;
+    color: white; font-size: 0.75rem;
+}
+.contact-form__submit-btn:hover {
+    cursor: pointer;
+    background-color: white;
+    color: black;
+    transition: 0.2s ease-in-out;
 }
 .developer-contact { 
     width: 50%;

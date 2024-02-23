@@ -1,32 +1,6 @@
 <template>
     <div class="modal">
-        <div class="modal-header">
-            <div class="modal-logo">
-                <span class="logo-circle">
-                    <svg class="icon-folder-new" xmlns="http://www.w3.org/2000/svg"
-                        xmlns:xlink="http://www.w3.org/1999/xlink" width="512" height="419.116" viewBox="0 0 512 419.116">
-                        <defs>
-                            <clipPath id="clip-folder-new">
-                                <rect width="512" height="419.116" />
-                            </clipPath>
-                        </defs>
-                        <g id="folder-new" clip-path="url(#clip-folder-new)">
-                            <path id="Union_1" data-name="Union 1"
-                                d="M16.991,419.116A16.989,16.989,0,0,1,0,402.125V16.991A16.989,16.989,0,0,1,16.991,0H146.124a17,17,0,0,1,10.342,3.513L227.217,57.77H437.805A16.989,16.989,0,0,1,454.8,74.761v53.244h40.213A16.992,16.992,0,0,1,511.6,148.657L454.966,405.222a17,17,0,0,1-16.6,13.332H410.053v.562ZM63.06,384.573H424.722L473.86,161.988H112.2Z"
-                                fill="var(--c-action-primary)" stroke="" stroke-width="1" />
-                        </g>
-                    </svg>
-                </span>
-            </div>
-            <button class="btn-close">
-                <svg class="icon-cross" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                    <path fill="none" d="M0 0h24v24H0V0z" />
-                    <path
-                        d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"
-                        fill="var(--c-text-secondary)" />
-                </svg>
-            </button>
-        </div>
+        <contactInputForm></contactInputForm>
         <div class="modal-body">
             <h2 class="modal-title">Upload a file</h2>
             <p class="modal-description">Attach the file below</p>
@@ -46,16 +20,16 @@
                     Alternatively, you can select a file by <br /><strong>clicking here</strong>
                 </span>
             </label>
-        </div>
-        <div class="modal-footer">
-            <button class="btn-secondary">Cancel</button>
-            <button class="btn-primary">Upload File</button>
+            <div class="modal-footer">
+                <button class="btn-secondary">Cancel</button>
+                <button class="btn-primary">Upload File</button>
+            </div>
         </div>
     </div>
 </template>
 
-<script>
-
+<script setup>
+import contactInputForm from '../contactInputForm/contactInputFormComp.vue';
 </script>
 <style scoped>
 *,
@@ -83,70 +57,22 @@ textarea {
 
 .modal {
     width: 90%;
-    max-width: 500px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 10vh;
-    margin-bottom: 10vh;
-    background-color: rgba(17, 17, 17, 0.7);
+    background-color: rgba(5, 5, 5, 0.7);
     color: white;
-    border-radius: .5rem;
-    box-shadow: 0 5px 15px rgba(#000, .2);
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    ;
-}
-
-.modal-header {
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    padding: 1.5rem 1.5rem 1rem;
-}
-
-.logo-circle {
-    width: 3.5rem;
-    height: 3.5rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 50%;
-    background-color: var(--c-action-primary-accent);
-
-    svg {
-        max-width: 1.5rem;
-    }
-}
-
-.btn-close {
+    padding: 50px 100px;
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 2.25rem;
-    height: 2.25rem;
-    border-radius: .25rem;
-    border: none;
-    background-color: transparent;
-
-    &:hover,
-    &:focus {
-        background-color: var(--c-action-primary-accent);
-    }
+    flex-direction: row;
+    border-radius: 15px;
 }
-
-.icon-cross {
-    fill: white;
-
-}
-
 .modal-body {
     padding: 1rem 1.5rem;
+    margin-right: auto;
+    margin-left: 30px;
 }
 
 .icon-file-new {
-    fill: white;
-}
-
-.icon-folder-new {
     fill: white;
 }
 
@@ -215,6 +141,7 @@ textarea {
     [class*="btn-"] {
         margin-left: .75rem;
     }
+    margin-right: auto;
 }
 
 .btn-secondary {
