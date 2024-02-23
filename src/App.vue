@@ -6,11 +6,11 @@
             </h4>
 
             <div class="navigation-links">
-                <div class="nav-link-about nav-link" @click="changePage(0)">About</div>
-                <div class="nav-link-about nav-link" @click="changePage(1)">Developers</div>
-                <div class="nav-link-about nav-link" @click="changePage(2)">Projects</div>
-                <div class="nav-link-about nav-link" @click="changePage(3)">Contact</div>
-                <div class="nav-link-about nav-link" @click="changePage(4)">Info</div>
+                <div class="nav-link-about nav-link" @click="changePage(0)">Об компании</div>
+                <div class="nav-link-about nav-link" @click="changePage(1)">Разработчики</div>
+                <div class="nav-link-about nav-link" @click="changePage(2)">Проекты</div>
+                <div class="nav-link-about nav-link" @click="changePage(3)">Контакты</div>
+                <div class="nav-link-about nav-link" @click="changePage(4)">Информация</div>
             </div>
         </div>
 
