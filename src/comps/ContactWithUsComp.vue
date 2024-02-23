@@ -6,16 +6,14 @@
 
             <div class="main-inner__container">
 
-                
                 <div class="contact-wrapper">
-                    contact-wrapper
+                    <contactInputFormComp />
                 </div>
 
                 <div class="file-wrapper">
                     <contactFileFormComp/>
                 </div>
             </div>
-
 
         </div>
 
@@ -24,6 +22,7 @@
 
 <script setup>
 import contactFileFormComp from '@/comps/contactFileForm/contactFileFormComp';
+import contactInputFormComp from '@/comps/contactInputForm/contactInputFormComp';
 
 </script>
 <style scoped>
@@ -52,10 +51,12 @@ img {
     justify-content: center;
 }
 .main-inner__container {
+    position: absolute;
+    bottom: 2%;
     width: 90%;
-    height: 85%;
+    height: 88%;
     display: flex;
-    border: 1px solid rgb(255, 251, 251);
+    /* border: 1px solid rgb(255, 251, 251); */
 }
 
 .section-header {
@@ -74,8 +75,8 @@ img {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 20px;
-    border: 1px solid white;
+    justify-content: center;
+    border-right: 2px solid gray;
 }
 
 .file-wrapper {
@@ -83,8 +84,8 @@ img {
     width: 50%;
     display: flex;
     flex-direction: column;
-    padding: 20px;
-    border: 1px solid white;
+    padding: 0 20px;
+    /* border: 1px solid white; */
 }
 
 /* Left contact page */
