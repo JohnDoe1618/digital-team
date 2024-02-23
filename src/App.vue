@@ -70,10 +70,30 @@ const handleScroll = (e) => {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    overflow: hidden;
 }
 
 .section {
     width: 100%;
     height: 100vh;
+}
+
+/* Стили для скрытия скроллбаров */
+::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+}
+
+/* Дополнительные стили для стилизации скроллбаров в браузерах WebKit (Chrome, Safari) */
+::-webkit-scrollbar-track {
+    background: transparent; /* Цвет фона трека */
+}
+
+::-webkit-scrollbar-thumb {
+    background: transparent; /* Цвет ползунка */
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: transparent; /* Цвет ползунка при наведении */
 }
 </style>
