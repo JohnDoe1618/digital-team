@@ -2,7 +2,7 @@
     <div class="section">
         <img class="backg" src="../assets/images/3.jpg" alt="">
         <div class="container">
-    
+
             <div class="inner-container">
 
                 <div class="info-block">
@@ -12,7 +12,12 @@
 
                     <div class="citate">
                         <h5>
-                            Здравствуйте! Я - Full Stack Developer, специализирующийся на создании высококачественных программ и веб-сайтов. Могу воплотить ваши идеи в жизнь, используя передовые технологии, такие как Vue.js, JavaScript, TypeScript, Python и Adonis.js. Обладаю опытом работы как с frontend (Vue, JS, TS), так и с backend (Python, Adonis), что позволяет мне создавать мощные и инновационные проекты с нуля. Доверьте мне вашу задачу, и я с удовольствием превращу ее в успешный продукт, сочетающий в себе функциональность, качество и элегантный дизайн
+                            Здравствуйте! Я - Full Stack Developer, специализирующийся на создании высококачественных
+                            программ и веб-сайтов. Могу воплотить ваши идеи в жизнь, используя передовые технологии, такие
+                            как Vue.js, JavaScript, TypeScript, Python и Adonis.js. Обладаю опытом работы как с frontend
+                            (Vue, JS, TS), так и с backend (Python, Adonis), что позволяет мне создавать мощные и
+                            инновационные проекты с нуля. Доверьте мне вашу задачу, и я с удовольствием превращу ее в
+                            успешный продукт, сочетающий в себе функциональность, качество и элегантный дизайн
                         </h5>
                     </div>
 
@@ -22,10 +27,12 @@
                     </div>
                 </div>
 
-                <div class="profile-block">
-                    <img class="profile-avatar-developer" src="../assets/developers/smiling-young-man-with-crossed-arms-outdoors (1)-fotor-bg-remover-20240223194416.png" alt="">
-                    
-                    <div v-show="true" class="detail-info">
+                <div id="profile-block" class="profile-block" @mouseenter="handleMouseEnter" @mouseleave="handleMouseLeave">
+                    <img id="profile-avatar-developer" class="profile-avatar-developer"
+                        src="../assets/developers/smiling-young-man-with-crossed-arms-outdoors (1)-fotor-bg-remover-20240223194416.png"
+                        alt="">
+
+                    <div v-show="true" id="detail-info" class="detail-info">
                         <div class="abstract-block">
                             <div class="ab-title">Навыки / технологии</div>
                             <div class="sub-ab-block">
@@ -53,7 +60,7 @@
 
                         </div>
 
-                        <div class="abstract-block" >
+                        <div class="abstract-block">
                             <div class="ab-title">Репозитори / Проекты / Отзывы</div>
                             <div class="sub-ab-block">
                                 <div class="xxx-info-block">
@@ -65,7 +72,7 @@
                                     <div class="middle-block">
                                         <div class="middle-block-title">Проекты</div>
                                         <div class="subtitle">34</div>
-                                        
+
                                     </div>
                                     <div class="end-block">
                                         <div class="end-block-title">Отзывы</div>
@@ -82,12 +89,22 @@
                     </div>
                 </div>
             </div>
-    
+
         </div>
     </div>
 </template>
 
 <script setup>
+import gsap from 'gsap';
+
+function handleMouseEnter() {
+    gsap.to('#detail-info', { duration: 0.4, bottom: 0 });
+}
+
+function handleMouseLeave() {
+    gsap.to('#detail-info', { duration: 0.4, bottom: '-100vh' });
+}
+
 
 </script>
 <style scoped lang="scss">
@@ -185,8 +202,7 @@
     padding: 10px 20px;
 }
 
-.buttons .button:last-child
-{
+.buttons .button:last-child {
     margin-left: 20px;
 }
 
@@ -228,7 +244,7 @@
     display: flex;
     flex-direction: column;
     z-index: 0;
-    bottom: 0;
+    bottom: -100vh;
     background-color: rgba($color: #080808, $alpha: .9);
     padding: 20px;
 }
@@ -299,9 +315,7 @@
     flex-direction: column;
 }
 
-.start-block-title {
-
-}
+.start-block-title {}
 
 .middle-block {
     width: 32%;
@@ -315,9 +329,9 @@
     flex-direction: column;
 
 }
-.middle-block-title {
-    
-}
+
+.middle-block-title {}
+
 .end-block {
     width: 32%;
     height: 100%;
@@ -330,9 +344,9 @@
     flex-direction: column;
 
 }
-.end-block-title {
-    
-}
+
+.end-block-title {}
+
 .card-skills {
     display: flex;
     flex-wrap: wrap;
@@ -355,5 +369,4 @@
     background-color: #131313;
     border-radius: 10px;
 }
-
 </style>
