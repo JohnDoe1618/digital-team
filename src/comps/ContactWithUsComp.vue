@@ -1,28 +1,18 @@
 <template>
     <div class="section">
         <img src="../assets/images/2.jpg" alt="">
-
         <div class="main-container">
-
             <div class="main-inner__container">
-
                 <div class="contact-wrapper">
-                    <contactInputFormComp />
-                </div>
-
-                <div class="file-wrapper">
                     <contactFileFormComp/>
                 </div>
             </div>
-
         </div>
-
     </div>
 </template>
 
 <script setup>
 import contactFileFormComp from '@/comps/contactFileForm/contactFileFormComp';
-import contactInputFormComp from '@/comps/contactInputForm/contactInputFormComp';
 
 </script>
 <style scoped>
@@ -56,6 +46,7 @@ img {
     width: 90%;
     height: 88%;
     display: flex;
+    align-items: center;
     /* border: 1px solid rgb(255, 251, 251); */
 }
 
@@ -71,12 +62,10 @@ img {
 
 .contact-wrapper {
     position: relative;
-    width: 50%;
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    border-right: 2px solid gray;
 }
 
 .file-wrapper {
