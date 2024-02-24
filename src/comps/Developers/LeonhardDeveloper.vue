@@ -24,17 +24,47 @@
 
             <div v-show="true" id="detail-info" class="detail-info">
                 <div class="abstract-block">
-                    <div class="ab-title">Навыки / технологии</div>
+                    <div class="ab-title">Навыки и технологии</div>
                     <div class="sub-ab-block">
                         <div class="card-skills">
                             <div class="badge"  v-for="skill of skills" :key="skill.id">{{ skill.name }}</div>
                         </div>
                     </div>
-_
+                    <div class="inline"></div>
                 </div>
 
                 <div class="abstract-block">
-                    <div class="ab-title">Репозитори / Проекты / Отзывы</div>
+                    <div class="ab-title">Дополнительная информация</div>
+                    <div class="inner-block">
+                        <div class="inner-block__block">
+                            <div class="inner-block__row">
+                                <!-- Здесь информация о разработчике(номер, почта, адрес, соц сети, гитхаб) -->
+                                <div class="inner-block__col">
+                                    <div class="inner-block__col-title">Телефон:</div>
+                                    <div class="inner-block__col-subtitle" style="margin-left: 10px;">{{ '8434234234' }}</div>
+                                </div>
+                                <div class="inner-block__col">
+                                    <div class="inner-block__col-title">E-mail:</div>
+                                    <div class="inner-block__col-subtitle" style="margin-left: 10px;">{{ 'allistirking422@gmail.com' }}</div>
+                                </div>
+                                <div class="inner-block__col">
+                                    <div class="inner-block__col-title">GitHub:</div>
+                                    <div class="inner-block__col-subtitle" style="margin-left: 10px;">{{ 'https:github.com' }}</div>
+                                </div>
+                                <div class="inner-block__col">
+                                    <div class="inner-block__col-title">Адрес:</div>
+                                    <div class="inner-block__col-subtitle" style="margin-left: 10px;">{{ 'Россия, Краснодарский край, г.Краснодар.' }}</div>
+                                </div>
+                                <div class="inner-block__col">
+                                    <div class="inner-block__col-title">VK:</div>
+                                    <div class="inner-block__col-subtitle" style="margin-left: 10px;">{{ 'https:vk.com/EricLeonhard314' }}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="abstract-block">
                     <div class="sub-ab-block">
                         <div class="xxx-info-block">
                             <div class="start-block">
@@ -55,10 +85,6 @@ _
 
                     </div>
                 </div>
-                <!-- <div class="links">
-                    
-                        github link - 
-                </div> -->
             </div>
         </div>
     </div>
@@ -167,6 +193,14 @@ function handleMouseLeave() {
     justify-content: center;
 }
 
+.inline
+{
+    width: 50%;
+    height: 1px;
+    background-color: #b1b1b1;
+    margin-bottom: 50px;
+}
+
 .info-block {
     position: relative;
     width: 50%;
@@ -258,7 +292,7 @@ function handleMouseLeave() {
 .detail-info {
     position: absolute;
     width: 100%;
-    height: 80%;
+    height: 100%;
     display: flex;
     flex-direction: column;
     z-index: 0;
@@ -276,15 +310,52 @@ function handleMouseLeave() {
 .abstract-block {
     position: relative;
     width: 100%;
-    height: 45%;
+    height: 33%;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
 }
 
-.ab-title {
+.abstract-block .inner-block {
+    width: 100%;
+    height: 100%;
+    padding: 25px;
+}
+
+.abstract-block .inner-block .inner-block__block {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: rgba($color: #000000, $alpha: .5);
+    border-radius: 15px;
+    padding: 10px 20px;
+}
+
+.abstract-block .inner-block .inner-block__block .inner-block__row {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
     font-size: 15px;
+    letter-spacing: 0px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.abstract-block .inner-block .inner-block__block .inner-block__row .inner-block__col {
+    width: 100%;
+    display: flex;
+    font-size: 15px;
+    letter-spacing: 0px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    margin-top: 5px;
+}
+
+.ab-title {
+    font-size: 20px;
     letter-spacing: 0px;
 }
 
@@ -324,7 +395,7 @@ function handleMouseLeave() {
 .start-block {
     width: 32%;
     height: 100%;
-    background-color: #131313;
+    background-color: rgba($color: #000000, $alpha: .5);
     border-radius: 10px;
     display: flex;
     align-items: center;
@@ -332,13 +403,11 @@ function handleMouseLeave() {
     position: relative;
     flex-direction: column;
 }
-
-.start-block-title {}
 
 .middle-block {
     width: 32%;
     height: 100%;
-    background-color: #131313;
+    background-color: rgba($color: #000000, $alpha: .5);
     border-radius: 10px;
     display: flex;
     align-items: center;
@@ -347,13 +416,11 @@ function handleMouseLeave() {
     flex-direction: column;
 
 }
-
-.middle-block-title {}
 
 .end-block {
     width: 32%;
     height: 100%;
-    background-color: #131313;
+    background-color: rgba($color: #000000, $alpha: .5);
     border-radius: 10px;
     display: flex;
     align-items: center;
@@ -362,8 +429,6 @@ function handleMouseLeave() {
     flex-direction: column;
 
 }
-
-.end-block-title {}
 
 .card-skills {
     display: flex;
@@ -384,7 +449,8 @@ function handleMouseLeave() {
     font-size: 12px;
     letter-spacing: 0px;
     color: #ffffff;
-    background-color: #131313;
+    background-color: rgba($color: #000000, $alpha: .5);
     border-radius: 10px;
+    margin-top: 15px;
 }
 </style>
