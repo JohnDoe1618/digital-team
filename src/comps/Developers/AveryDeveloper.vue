@@ -19,7 +19,7 @@
 
         <div id="profile-block" class="profile-block" @mouseenter="handleMouseEnter" @mouseleave="handleMouseLeave">
             <img id="profile-avatar-developer" class="profile-avatar-developer"
-                src="../../assets/developers/A.png"
+                src="../../assets/developers/A__.png"
                 alt="">
 
             <div v-show="true" id="detail-info" class="detail-info">
