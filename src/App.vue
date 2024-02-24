@@ -61,10 +61,10 @@ import ContactWithUsComp from './comps/ContactWithUsComp.vue';
 import FooterInfoComp from './comps/FooterInfoComp.vue';
 
 
-const showAboutUsComp = ref(false);
+const showAboutUsComp = ref(true);
 const showDevelopersComp = ref(false);
 const showOurProjectsComp = ref(false);
-const showContactWithUsComp = ref(true);
+const showContactWithUsComp = ref(false);
 const showFooterInfoComp = ref(false);
 
 const handleScroll = (e) => {
