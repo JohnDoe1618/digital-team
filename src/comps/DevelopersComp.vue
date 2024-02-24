@@ -8,7 +8,7 @@
                     '--swiper-pagination-color': '#fff',
                 }"
                 :navigation="true"
-                :modules="[Pagination, Navigation]"
+                :modules="[Navigation]"
             >
                 <swiper-slide>
                     <LeonhardDeveloper></LeonhardDeveloper>
@@ -25,9 +25,8 @@
 import AveryDeveloper from '../comps/Developers/AveryDeveloper.vue'
 import LeonhardDeveloper from '../comps/Developers/LeonhardDeveloper.vue'
 import { Swiper, SwiperSlide } from 'swiper/vue';
-import { Pagination, Navigation } from 'swiper/modules';
+import { Navigation } from 'swiper/modules';
 import 'swiper/css';
-import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 
 
