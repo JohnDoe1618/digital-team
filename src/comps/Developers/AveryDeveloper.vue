@@ -19,7 +19,7 @@
 
         <div id="profile-block" class="profile-block" @mouseenter="handleMouseEnter" @mouseleave="handleMouseLeave">
             <img id="profile-avatar-developer" class="profile-avatar-developer"
-                src="../../assets/developers/smiling-young-man-with-crossed-arms-outdoors (1)-fotor-bg-remover-20240223194416.png"
+                src="../../assets/developers/A.png"
                 alt="">
 
             <div v-show="true" id="detail-info" class="detail-info">
