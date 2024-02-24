@@ -31,3 +31,8 @@ app
     .use(router)
     .use(vuetify)
     .mount('#app');
+
+export {
+    db,
+    storage,
+}
