@@ -40,6 +40,17 @@
                                 </div>
                             </div>
 
+                            <!-- Время разработки проекта  -->
+                            <div class="info-block__time-block">
+                                <!-- Заголовок -->
+                                <h2 class="time-block__title">Время разработки проекта</h2>
+                                <!-- Время разработки проекта -->
+                                <div class="time-block__body">
+                                    <p>Дата начала: <span class="input-time">20.02.2024</span></p>
+                                    <p>Дата выпуска: <span class="output-time">В разработке</span></p>
+                                </div>
+                            </div>
+
                         </div>
 
                         <!-- Блок отрисовки превью картинок -->
@@ -60,9 +71,25 @@
                                 </swiper-slide>
 
                             </swiper>
+
+                            <!-- Блок пагинации превью-картинок  -->
                             <div class="preview-block__pagination">
+                                <v-icon
+                                id="prev-btn"
+                                class="mb-2 pagination-arrow"
+                                style="cursor: pointer;"
+                                icon="mdi-arrow-up"
+                                size="20"
+                                ></v-icon>
                                 <div class="pagination-dots" :style="(currentSlide === 0)? {backgroundColor: 'rgb(0, 195, 255)'} : {}"></div>
                                 <div class="pagination-dots" :style="(currentSlide === 1)? {backgroundColor: 'rgb(0, 195, 255)'} : {}"></div>
+                                <v-icon
+                                id="next-btn"
+                                class="mt-2 pagination-arrow"
+                                style="cursor: pointer;"
+                                icon="mdi-arrow-down"
+                                size="20"
+                                ></v-icon>
                             </div>
                         </div>
                     </div>
@@ -130,14 +157,13 @@ img {
     width: 50%;
     height: 100%;
     padding: 2rem 3rem;
-    border: 1px solid white;
 }
 .info-block__title-block {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
-    height: max-content;
+    height: 10%;
     background-color: rgba(0, 0, 0, 0.6);
     border-radius: 10px;
 }
@@ -152,12 +178,13 @@ img {
     padding: 1rem;
     text-align: center;
     overflow: hidden;
-    height: 50%;
+    height: 45%;
     background-color: rgba(0, 0, 0, 0.6);
     border-radius: 10px;
 
 }
 .info-block__tech-block {
+    height: 20%;
     margin-top: 1rem;
     background-color: rgba(0, 0, 0, 0.6);
     border-radius: 10px;
@@ -172,12 +199,45 @@ img {
     color: white;
     font-weight: 300;
     font-size: 18px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
 }
 .tech-block__items {
     width: 100%;
     padding: 0.5rem 0;
     height: max-content;
+}
+.info-block__time-block {
+    margin-top: 1rem;
+    background-color: rgba(0, 0, 0, 0.6);
+    border-radius: 10px;
+    padding: 1rem;
+}
+.time-block__title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 20%;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    color: white;
+    font-weight: 300;
+    font-size: 16px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+.time-block__body {
+    margin-top: 0.4rem;
+    display: flex;
+    justify-content: space-evenly;
+    color: white;
+    font-size: 12px;
+}
+.input-time {
+    color: aquamarine;
+    font-style: italic;
+}
+.output-time {
+    color: rgb(249, 255, 127);
+    font-style: italic;
 }
 .info-block__descrition-block p {
     display: flex;
@@ -203,11 +263,24 @@ img {
 }
 .preview-block__pagination {
     position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     align-self: center;
     right: 10px;
     width: max-content;
     height: max-content;
     z-index: 20;
+
+}
+.pagination-arrow {
+    color: white;
+    transition: color 0.4s ease;
+}
+.pagination-arrow:hover {
+    color: rgb(130, 130, 130);
+    transition: color 0.4s ease;
 }
 .pagination-dots {
     width: 15px;
