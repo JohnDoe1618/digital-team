@@ -28,13 +28,23 @@
                                 </p>
                             </div>
 
+                            <!-- Используемые технологии в проекте -->
                             <div class="info-block__tech-block">
-                                
+                                <!-- Заголовок -->
+                                <h2 class="tech-block__title">Используемые технологии</h2>
+                                <!-- Используемые технологии -->
+                                <div class="tech-block__items">
+                                    <v-chip :density="'comfortable'" color="white" v-for="(item, index) in techItems" :key="index">
+                                        {{ item }}
+                                    </v-chip>
+                                </div>
                             </div>
+
                         </div>
 
                         <!-- Блок отрисовки превью картинок -->
                         <div class="project-container__preview-block">
+                            <!-- Слайдер для превью-картинок проекта -->
                             <swiper 
                             :navigation="{prevEl: '#prev-btn', nextEl: '#next-btn'}" 
                             @_slide-class="(e) => updatePagination(e.activeIndex)"
@@ -46,13 +56,10 @@
                                 </swiper-slide>
 
                                 <swiper-slide>
-                                    <!-- <div class="preview-block__wrapper">
-                                    </div> -->
                                     <img class="preview-block__image" src="../assets/images/stub/stub-1.jpg" alt="stub-1">
                                 </swiper-slide>
+
                             </swiper>
-                            <!-- <v-btn id="prev-btn">Prev</v-btn>
-                            <v-btn id="next-btn">Next</v-btn> -->
                             <div class="preview-block__pagination">
                                 <div class="pagination-dots" :style="(currentSlide === 0)? {backgroundColor: 'rgb(0, 195, 255)'} : {}"></div>
                                 <div class="pagination-dots" :style="(currentSlide === 1)? {backgroundColor: 'rgb(0, 195, 255)'} : {}"></div>
@@ -61,7 +68,9 @@
                     </div>
                 </swiper-slide>
                 <swiper-slide>
-                    <div class="project-container"></div>
+                    <div class="project-container">
+
+                    </div>
                 </swiper-slide>
             </swiper>
         </div>
@@ -76,6 +85,7 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 
 const currentSlide = ref(0);
+const techItems = ref(['JavaScript', 'Vue3', 'TypeScript', 'Vuetify', 'Webpack'])
 
 function updatePagination(indexSlide) {
     currentSlide.value = indexSlide;
@@ -146,6 +156,28 @@ img {
     background-color: rgba(0, 0, 0, 0.6);
     border-radius: 10px;
 
+}
+.info-block__tech-block {
+    margin-top: 1rem;
+    background-color: rgba(0, 0, 0, 0.6);
+    border-radius: 10px;
+    padding: 1rem;
+}
+.tech-block__title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    color: white;
+    font-weight: 300;
+    font-size: 18px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+}
+.tech-block__items {
+    width: 100%;
+    padding: 0.5rem 0;
+    height: max-content;
 }
 .info-block__descrition-block p {
     display: flex;
