@@ -6,11 +6,8 @@
                 '--swiper-navigation-color': '#fff',
                 '--swiper-pagination-color': '#fff',
             }" :navigation="true" :modules="[Navigation]">
-                <swiper-slide>
-                    <div class="slide"></div>
-                </swiper-slide>
-                <swiper-slide>
-                    <div class="slide"></div>
+                <swiper-slide v-for="project in projects" :key="project.id">
+                    <ourProjectItemComp :project-data="project" />
                 </swiper-slide>
             </swiper>
         </div>
@@ -18,10 +15,34 @@
 </template>
 
 <script setup>
+import ourProjectItemComp from './ourProjects/ourProjectItemComp.vue';
+import { ref } from 'vue';
 import { Swiper, SwiperSlide } from 'swiper/vue';
 import { Navigation } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
+
+const projects = ref([
+    {
+        id: Date.now(),
+        title: 'IDropper',
+        description: 'Сервис предоставляющий сотрудникам больниц и поликлинник возможность контролировать работу нового технического устройства IDropper, которое служит для отслеживания состояния капельниц, и является одной из важнейших инновационных разработок в сфере здравоохранения за последнее время. С помощью данной системы управления, сотрудники могут контролировать и регулировать работу технического устройства IDropper.',
+        technologies: ['JavaScript', 'Vue3', 'TypeScript', 'Vuetify', 'Webpack'],
+        beginDevTime: '20.02.2024',
+        endDevTime: 'В разработке',
+        images: ['stub-1.jpg', 'stub-1.jpg', 'stub-1.jpg'],
+    },
+    {
+        id: Date.now(),
+        title: 'ToDo List',
+        description: 'Описание проекта про ToDo list',
+        technologies: ['JavaScript', 'React', 'TypeScript', 'Vuetify', 'Webpack'],
+        beginDevTime: '12.08.2023',
+        endDevTime: '15.08.2023',
+        images: ['stub-2.jpg', 'stub-2.jpg', 'stub-2.jpg'],
+
+    }
+])
 
 </script>
 <style scoped>
@@ -41,18 +62,14 @@ img {
     z-index: 0;
     transform: rotate(180deg);
 }
+
 .our-project__container {
     width: 100%;
     height: 100%;
     position: relative;
-    border: 1px solid white;
 }
 
-.slide{
-    width: 450px;
-    height: 500px;
-    border: 1px solid white;
-}
+
 .swiper {
     position: relative;
     width: 85%;
