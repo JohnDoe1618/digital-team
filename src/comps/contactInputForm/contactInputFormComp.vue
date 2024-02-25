@@ -1,35 +1,33 @@
 <template>
     <div class="contact-input-form">
+        <!-- Title window -->
+        <div class="contact-input-title">
+            <h1>Форма</h1>
+        </div>
         <v-form class="contact-form">
             <!-- Name -->
             <v-text-field
-            placeholder="Name"
-            bg-color="rgba(17, 17, 17, 0.7)"
+            placeholder="Ваше имя"
+            bg-color="none"
             :density="'compact'"
             variant="outlined"
             ></v-text-field>
 
             <!-- E-mail -->
             <v-text-field
-            placeholder="E-mail"
-            bg-color="rgba(17, 17, 17, 0.7)"
+            placeholder="Ваш E-mail"
+            bg-color="none"
             :density="'compact'"
             variant="outlined"
             ></v-text-field>
 
             <!-- Message -->
             <v-textarea 
-            placeholder="Message"
+            placeholder="Напишите сообщение"
             variant="outlined"
-            bg-color="rgba(17, 17, 17, 0.7)"
+            bg-color="none"
             ></v-textarea>
 
-            <!-- Submit btn -->
-            <v-btn
-            class="contact-form__submit-btn"
-            rounded="xs"
-            color="rgba(17, 17, 17, 0.7)"
-            >Отправить</v-btn>
         </v-form>
 
         <!-- ??????????  -->
@@ -71,8 +69,18 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 60%;
+    width: 40%;
     color: white;
+}
+
+.contact-input-title {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    width: 100%;
+    font-size: 14px;
+    padding: 0px 10px;
 }
 .contact-form {
     position: relative;

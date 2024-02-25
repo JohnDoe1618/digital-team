@@ -41,13 +41,20 @@ img {
     justify-content: center;
 }
 .main-inner__container {
-    position: absolute;
+    position: relative;
     bottom: 2%;
-    width: 90%;
-    height: 88%;
+    width: 100%;
+    height: 40%;
     display: flex;
     align-items: center;
-    /* border: 1px solid rgb(255, 251, 251); */
+    justify-content: center;
+    flex-direction: column;
+}
+
+.modal-footer
+{
+    display: flex;
+    justify-content: space-between;
 }
 
 .section-header {
@@ -66,6 +73,7 @@ img {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
 }
 
 .file-wrapper {
