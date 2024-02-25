@@ -12,7 +12,7 @@
             </div>
 
             <div class="buttons">
-                <div class="button">Обратиться</div>
+                <div class="button" @click="() => isActive = true">Обратиться</div>
                 <div class="button">Telegram</div>
             </div>
         </div>
@@ -88,10 +88,19 @@
             </div>
         </div>
     </div>
+    <v-dialog
+        v-model="isActive"
+        width="auto"
+    >
+        <QuestionDialogToDev @close="() => {isActive = false}" :dev-id="'4pLR9DpOezROhWAbMTXW'" :name="'Leonhard Eric'"></QuestionDialogToDev>
+    </v-dialog>
 </template>
 <script setup>
+import QuestionDialogToDev from '../dialogs/QuestionDialogToDev.vue'
 import gsap from 'gsap';
 import {ref} from 'vue';
+
+const isActive = ref(false);
 
 function handleMouseEnter() {
     gsap.to('#detail-info', { duration: 0.4, bottom: 0 });
