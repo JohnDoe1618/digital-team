@@ -2,8 +2,8 @@
     <div class="modal">
         <contactInputForm></contactInputForm>
         <div class="modal-body">
-            <h2 class="modal-title">Upload a file</h2>
-            <p class="modal-description">Attach the file below</p>
+            <h2 class="modal-title">Загрузить файл</h2>
+            <p class="modal-description">Прикрепите файл ниже</p>
             <label class="upload-area">
                 <span class="upload-area-icon">
                     <svg class="icon-file-new" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -15,14 +15,14 @@
                         </g>
                     </svg>
                 </span>
-                <span class="upload-area-title">Drag file(s) here to upload.</span>
+                <span class="upload-area-title">Перетащите файл(ы) сюда что бы загрузить.</span>
                 <span class="upload-area-description">
-                    Alternatively, you can select a file by <br /><strong>clicking here</strong>
+                    Или, Вы можете выбрать файл(ы) <br /><strong>нажав здесь</strong>
                 </span>
             </label>
             <div class="modal-footer">
-                <button class="btn-secondary">Cancel</button>
-                <button class="btn-primary">Upload File</button>
+                <v-btn variant="tonal">Отмена</v-btn >
+                <v-btn variant="tonal">Отправить</v-btn >
             </div>
         </div>
     </div>
@@ -56,8 +56,8 @@ textarea {
 }
 
 .modal {
-    width: 90%;
-    background-color: rgba(5, 5, 5, 0.7);
+    position: relative;
+    width: 60%;
     color: white;
     padding: 50px 100px;
     display: flex;
@@ -65,6 +65,8 @@ textarea {
     justify-content: center;
     flex-direction: row;
     border-radius: 15px;
+    background-color: rgba(5, 5, 5, 0.7);
+
 }
 .modal-body {
     padding: 1rem 1.5rem;
@@ -117,6 +119,7 @@ textarea {
     display: block;
     font-weight: 700;
     color: white;
+    width: 100%;
 }
 
 .upload-area-description {
@@ -134,14 +137,16 @@ textarea {
 }
 
 .modal-footer {
+    position: absolute;
+    margin-top: 20px;
     padding: 1rem 1.5rem 1.5rem;
     display: flex;
     justify-content: flex-end;
-
     [class*="btn-"] {
         margin-left: .75rem;
     }
     margin-right: auto;
+    right: 0;
 }
 
 .btn-secondary {

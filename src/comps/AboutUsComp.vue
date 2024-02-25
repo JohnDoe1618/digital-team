@@ -24,7 +24,7 @@
                 </div>
                 <div class="button">
                     <img src="../assets/icons/github.png" class="icon-github" alt="">
-                    <a href="https://github.com/SystemsFailure" style="text-decoration: none;">
+                    <a href="https://github.com/JohnDoe1618/" style="text-decoration: none;">
                         <h3 style="margin-left: 20px;">Открыть исходники на GITHUB</h3>
                     </a>
                     <!-- Here was icon github -->
