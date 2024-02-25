@@ -12,12 +12,13 @@ export const firebaseConfig = {
     measurementId: "G-9Z8HS923LF"
 };
 
+
 export const run = () => {
-    console.debug('[FIREBASE] - Running')
+    console.debug('[FIREBASE] - Start Running')
     const appBase = initializeApp(firebaseConfig);
     const db = getFirestore(appBase);
     const storage = getStorage(appBase)
-
+    console.debug('[FIREBASE] - End Running')
     return {
         db,
         storage

@@ -40,14 +40,15 @@
             <!-- Описание проекта -->
             <div class="form-deal__middle-block">
                 <v-textarea
-                v-model="description"
-                label="Введите описание проекта"
-                base-color="rgb(120, 120, 120)"
-                color="white"
-                bg-color="rgb(40, 40, 40)"
-                :no-resize="true"
-                rows="5"
-                :rules="rulesDescription"
+                    v-model="description"
+                    label="Введите описание проекта"
+                    base-color="rgb(120, 120, 120)"
+                    color="white"
+                    bg-color="rgb(120, 120, 120)"
+                    :no-resize="true"
+                    rows="5"
+                    :rules="rulesDescription"
+                    variant="outlined"
                 >
                     <template v-slot:details>
                         <p :style="(description.length <= 1000)? {color: 'white'} : {color: 'red'}">{{ description.length }}/1000</p>
@@ -58,23 +59,23 @@
                 <div class="middle-block__file-input-block">
                     <label class="file-input" for="deal-file-input">
                         <v-icon 
-                        class="file-input__cancel-btn"
-                        @click.prevent="inputFile = null"
-                        v-show="inputFile !== null"
-                        color="red"
-                        icon="mdi-close-circle-outline"
+                            class="file-input__cancel-btn"
+                            @click.prevent="inputFile = null"
+                            v-show="inputFile !== null"
+                            color="red"
+                            icon="mdi-close-circle-outline"
                         ></v-icon>
                         <p v-show="inputFile === null" class="file-input-hint">Прикрепите файл</p>
                         <p v-show="inputFile !== null" class="file-input-hint">
                             {{ inputFile?.name }} 
-
                         </p>
                     </label>
                     <input 
-                    @change="(e) => handlerFileInput(e)"
-                    v-show="false"  
-                    id="deal-file-input" 
-                    type="file"/>
+                        @change="(e) => handlerFileInput(e)"
+                        v-show="false"  
+                        id="deal-file-input" 
+                        type="file"
+                    />
                 </div>
 
                 <!-- Ввод учетных данных -->
@@ -83,44 +84,44 @@
                 <div class="bottom-block__input-block">
                     <!-- Ваше имя -->
                     <v-text-field
-                    class="ma-1"
-                    variant="outlined"
-                    :density="'compact'"
-                    label="Ваше имя"
-                    base-color="white" 
-                    color="white"
-                    bg-color="rgb(120, 120, 120)"
+                        class="ma-1"
+                        variant="outlined"
+                        :density="'compact'"
+                        label="Ваше имя"
+                        base-color="white" 
+                        color="white"
+                        bg-color="rgb(120, 120, 120)"
                     ></v-text-field>
 
                     <!-- Телефон -->
                     <v-text-field
-                    class="ma-1"
-                    variant="outlined"
-                    :density="'compact'" 
-                    label="Телефон"
-                    base-color="white" 
-                    color="white"
-                    bg-color="rgb(120, 120, 120)"
+                        class="ma-1"
+                        variant="outlined"
+                        :density="'compact'" 
+                        label="Телефон"
+                        base-color="white" 
+                        color="white"
+                        bg-color="rgb(120, 120, 120)"
                     ></v-text-field>
 
                     <!-- E-mail -->
                     <v-text-field
-                    class="ma-1"
-                    variant="outlined"
-                    :density="'compact'"
-                    label="E-mail"
-                    base-color="white" 
-                    color="white"
-                    bg-color="rgb(120, 120, 120)"
+                        class="ma-1"
+                        variant="outlined"
+                        :density="'compact'"
+                        label="E-mail"
+                        base-color="white" 
+                        color="white"
+                        bg-color="rgb(120, 120, 120)"
                     ></v-text-field>
                 </div>
                 <!-- Кнопка отправки формы -->
                 <v-btn
-                class="mb-6"
-                base-color="white" 
-                color="rgb(120, 120, 120)"
-                bg-color="rgb(120, 120, 120)"
-                >Отправить форму</v-btn>
+                    class="my-8 ml-auto"
+                    base-color="white" 
+                    color="rgb(120, 120, 120)"
+                    bg-color="rgb(120, 120, 120)"
+                >Отправить</v-btn>
             </div>
 
         </v-form>
@@ -165,11 +166,12 @@ function handlerFileInput(e) {
 <style scoped>
 
 .form-deal__container {
-    width: 700px;
+    width: 50%;
     height: max-content;
     margin: auto;
-    background-color: rgba(58, 58, 58, 0.781);
+    background-color: rgba(54, 54, 54, 0.781);
     backdrop-filter: blur(4px);
+    padding: 15px;
 }
 
 .form-deal__title {
@@ -183,24 +185,23 @@ function handlerFileInput(e) {
 }
 .form-deal__top-block {
     width: 100%;
-    padding: 0 2rem;
+    padding: 0 1.5rem;
     margin-top: 1rem;
     display: flex;
-    /* border: 1px solid white; */
 }
 .form-deal__middle-block {
     margin-top: 1rem;
     padding: 0 2rem;
 }
 .middle-block__file-input-block {
-    padding: 25px;
+    padding: 15px 0px;
     margin-top: 1rem;
 }
 .file-input {
     position: relative;
     width: max-content;
     background-image: url("data:image/svg+xml,%3csvg width='100%' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%' height='100%25' fill='none' stroke='%23ccc' stroke-width='3' stroke-dasharray='6%2c 14' stroke-dashoffset='0' stroke-linecap='square'/%3e%3c/svg%3e");
-    padding: 30px 50px;
+    padding: 20px 30px;
     width: 500px;
     color: white;
     cursor: pointer;
@@ -218,7 +219,7 @@ function handlerFileInput(e) {
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
-    width: 200px;
+    width: 150px;
     display: inline-block;
 }
 
