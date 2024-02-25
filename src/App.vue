@@ -61,9 +61,9 @@ import ContactWithUsComp from './comps/ContactWithUsComp.vue';
 import FooterInfoComp from './comps/FooterInfoComp.vue';
 
 
-const showAboutUsComp = ref(true);
+const showAboutUsComp = ref(false);
 const showDevelopersComp = ref(false);
-const showOurProjectsComp = ref(false);
+const showOurProjectsComp = ref(true);
 const showContactWithUsComp = ref(false);
 const showFooterInfoComp = ref(false);
 
