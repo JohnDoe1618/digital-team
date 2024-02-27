@@ -1,4 +1,5 @@
 <template>
+    <PhotoViewer v-if="true"></PhotoViewer>
     <div class="section">
         <img src="../assets/images/4.jpg" alt="">
         <div class="our-project__container">
@@ -15,6 +16,7 @@
 </template>
 
 <script setup>
+import PhotoViewer from '../comps/dialogs/PhotoViewer.vue';
 import ourProjectItemComp from './ourProjects/ourProjectItemComp.vue';
 import { ref } from 'vue';
 import { Swiper, SwiperSlide } from 'swiper/vue';

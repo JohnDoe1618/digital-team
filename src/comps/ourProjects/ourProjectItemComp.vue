@@ -22,6 +22,7 @@
                 <h2 class="tech-block__title">Используемые технологии</h2>
                 <!-- Используемые технологии -->
                 <div class="tech-block__items">
+                    <v-chip :density="'comfortable'" color="white" v-for="(item, index) in techItems" :key="index" class="mx-2 my-2">
                     <v-chip :density="'comfortable'" color="white" v-for="(item, index) in props.projectData?.technologies" :key="index">
                         {{ item }}
                     </v-chip>
@@ -48,7 +49,7 @@
                 @_slide-class="(e) => updatePagination(e.activeIndex)" :modules="[Navigation]" direction="vertical">
 
                 <swiper-slide v-for="(image, index) in props.projectData?.images" :key="index">
-                    <img class="preview-block__image" :src="require(`../../assets/images/stub/${image}`)" alt="project-preview-image">
+                    <img class="preview-block__image" :src="require(`../../assets/images/stub/${image}`)" alt="project-preview-image" @click="() => showPhotoViewer = true">
                 </swiper-slide>
 
             </swiper>
@@ -78,6 +79,8 @@ import { Navigation } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 
+const showPhotoViewer = ref(false)
+
 const props = defineProps({
     projectData: {
         type: Object
@@ -85,6 +88,7 @@ const props = defineProps({
 });
 
 const currentSlide = ref(0);
+const techItems = ref(['JavaScript', 'Vue3', 'TypeScript', 'Vuetify', 'Webpack', 'JavaScript', 'Vue3', 'TypeScript', 'Vuetify', 'Webpack'])
 
 function updatePagination(indexSlide) {
     currentSlide.value = indexSlide;

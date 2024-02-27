@@ -11,10 +11,10 @@
                 :modules="[Navigation]"
             >
                 <swiper-slide>
-                    <LeonhardDeveloper></LeonhardDeveloper>
+                    <AveryDeveloper></AveryDeveloper>
                 </swiper-slide>
                 <swiper-slide>
-                    <AveryDeveloper></AveryDeveloper>
+                    <LeonhardDeveloper></LeonhardDeveloper>
                 </swiper-slide>
             </swiper>
         </div>
