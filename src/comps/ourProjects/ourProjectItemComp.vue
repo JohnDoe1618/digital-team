@@ -22,7 +22,7 @@
                 <h2 class="tech-block__title">Используемые технологии</h2>
                 <!-- Используемые технологии -->
                 <div class="tech-block__items">
-                    <v-chip :density="'comfortable'" color="white" v-for="(item, index) in techItems" :key="index" class="mx-2 my-2">
+                    <v-chip :density="'comfortable'" color="white" v-for="(item, index) in techItems" :key="index" class="mx-2 my-2"></v-chip>
                     <v-chip :density="'comfortable'" color="white" v-for="(item, index) in props.projectData?.technologies" :key="index">
                         {{ item }}
                     </v-chip>
