@@ -201,6 +201,9 @@ const isActive = ref(false);
     display: flex;
     align-items: center;
     justify-content: center;
+    border: 1px solid #535353;
+    border-radius: 10px;
+
 }
 
 .inline

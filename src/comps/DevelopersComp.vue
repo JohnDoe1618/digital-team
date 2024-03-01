@@ -1,6 +1,6 @@
 <template>
     <div class="section">
-        <img class="backg" src="../assets/images/3.jpg" alt="">
+        <!-- <img class="backg" src="../assets/images/3.jpg" alt=""> -->
         <div class="container">
             <swiper
                 :style="{
@@ -94,5 +94,6 @@ import 'swiper/css/navigation';
     display: flex;
     align-items: center;
     justify-content: center;
+
 }
 </style>
