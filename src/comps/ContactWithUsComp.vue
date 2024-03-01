@@ -1,6 +1,6 @@
 <template>
     <div class="section">
-        <img src="../assets/images/2.jpg" alt="">
+        <!-- <img src="../assets/images/2.jpg" alt=""> -->
         <div class="main-container">
             <div class="main-inner__container">
                 <div class="contact-wrapper">
@@ -39,6 +39,7 @@ img {
     display: flex;
     align-items: center;
     justify-content: center;
+    
 }
 .main-inner__container {
     position: relative;

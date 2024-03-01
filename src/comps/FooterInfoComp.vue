@@ -1,6 +1,6 @@
 <template>
     <div class="section">
-        <img src="../assets/images/5.jpg" alt="">
+        <!-- <img src="../assets/images/5.jpg" alt=""> -->
 
         <div class="main-block">
             <div class="inner-container">
@@ -293,10 +293,11 @@ img {
     width: 80%;
     height: 80%;
     text-align: center;
-    border: 1px solid rgb(177, 177, 177);
     background-color: rgba($color: #000000, $alpha: .5);
     padding: 20px;
     display: flex;
+    border: 1px solid #535353;
+    border-radius: 10px;
 }
 
 .primary-info {

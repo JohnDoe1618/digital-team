@@ -1,6 +1,6 @@
 <template>
     <div class="section">
-        <img class="backg" src="../assets/images/1.jpg" alt="">
+        <!-- <img class="backg" src="../assets/images/1.jpg" alt=""> -->
 
         <div class="main-container">
             <!-- <div class="glitch" title="Digital Artifact .inc">Digital Artifact .inc</div> -->

@@ -1,7 +1,7 @@
 <template>
     <PhotoViewer v-if="false"></PhotoViewer>
     <div class="section">
-        <img src="../assets/images/4.jpg" alt="">
+        <!-- <img src="../assets/images/4.jpg" alt=""> -->
         <div class="our-project__container">
             <swiper :style="{
                 '--swiper-navigation-color': '#fff',

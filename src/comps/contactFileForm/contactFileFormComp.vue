@@ -65,7 +65,9 @@ textarea {
     justify-content: center;
     flex-direction: row;
     border-radius: 15px;
-    background-color: rgba(5, 5, 5, 0.7);
+    background-color: rgba(20, 20, 20, 0.7);
+    border: 1px solid #535353;
+    border-radius: 10px;
 
 }
 .modal-body {
