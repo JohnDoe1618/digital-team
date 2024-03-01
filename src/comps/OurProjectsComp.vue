@@ -1,5 +1,5 @@
 <template>
-    <PhotoViewer v-if="true"></PhotoViewer>
+    <PhotoViewer v-if="false"></PhotoViewer>
     <div class="section">
         <img src="../assets/images/4.jpg" alt="">
         <div class="our-project__container">
@@ -18,33 +18,24 @@
 <script setup>
 import PhotoViewer from '../comps/dialogs/PhotoViewer.vue';
 import ourProjectItemComp from './ourProjects/ourProjectItemComp.vue';
-import { ref } from 'vue';
+import { ref, onMounted } from 'vue';
 import { Swiper, SwiperSlide } from 'swiper/vue';
 import { Navigation } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
+import ApiFirebase from '@/api/database';
 
-const projects = ref([
-    {
-        id: Date.now(),
-        title: 'IDropper',
-        description: 'Сервис предоставляющий сотрудникам больниц и поликлинник возможность контролировать работу нового технического устройства IDropper, которое служит для отслеживания состояния капельниц, и является одной из важнейших инновационных разработок в сфере здравоохранения за последнее время. С помощью данной системы управления, сотрудники могут контролировать и регулировать работу технического устройства IDropper.',
-        technologies: ['JavaScript', 'Vue3', 'TypeScript', 'Vuetify', 'Webpack'],
-        beginDevTime: '20.02.2024',
-        endDevTime: 'В разработке',
-        images: ['stub-1.jpg', 'stub-1.jpg', 'stub-1.jpg'],
-    },
-    {
-        id: Date.now(),
-        title: 'ToDo List',
-        description: 'Описание проекта про ToDo list',
-        technologies: ['JavaScript', 'React', 'TypeScript', 'Vuetify', 'Webpack'],
-        beginDevTime: '12.08.2023',
-        endDevTime: '15.08.2023',
-        images: ['stub-2.jpg', 'stub-2.jpg', 'stub-2.jpg'],
+onMounted(
+    async () => await fetchItems()
+)
 
-    }
-])
+const api = new ApiFirebase("projects")
+
+const projects = ref([])
+
+async function fetchItems() {
+    projects.value = await api.getAllDocuments()
+}
 
 </script>
 <style scoped>
