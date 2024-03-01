@@ -35,6 +35,7 @@ const projects = ref([])
 
 async function fetchItems() {
     projects.value = await api.getAllDocuments()
+    console.log(projects.value)
 }
 
 </script>

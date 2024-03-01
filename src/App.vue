@@ -1,12 +1,11 @@
 <template>
     <div class="section" @wheel="handleScroll">
         <div class="header">
-            <h4>
-                DA .inc
-            </h4>
-
             <div class="navigation-links">
-                <div class="nav-link-about nav-link" @click="changePage(0)">Об компании</div>
+                <h4>
+                    DA .inc
+                </h4>
+                <div class="nav-link-about nav-link" @click="changePage(0)">О компании</div>
                 <div class="nav-link-about nav-link" @click="changePage(1)">Разработчики</div>
                 <div class="nav-link-about nav-link" @click="changePage(2)">Проекты</div>
                 <div class="nav-link-about nav-link" @click="changePage(3)">Контакты</div>
@@ -167,30 +166,37 @@ function changePage(number) {
     font-size: 35px;
     text-align: center;
     color: white;
-    padding: 20px 100px;
     font-weight: bold;
     display: flex;
     z-index: 2;
 }
 
 .navigation-links {
-    width: 45%;
+    position: relative;
+    width: 100%;
     height: 100%;
     display: flex;
     align-items: center;
-    justify-content: space-around;
     margin-left: auto;
     z-index: 2;
+    padding: 10px 20px;
+    border-bottom: 1px solid #616161;
+}
+
+.navigation-links h4 {
+    margin-right: auto;
+    font-size: 25px;
 }
 
 .navigation-links .nav-link {
-    font-size: 18px;
+    font-size: 16px;
     color: rgb(255, 255, 255);
     border-radius: 5px;
+    margin-left: 20px;
 }
 
 .navigation-links .nav-link:hover {
-    color: rgb(0, 195, 255);
+    color: rgb(0, 255, 115);
     cursor: pointer;
 }
 

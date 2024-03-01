@@ -68,17 +68,17 @@
                         <div class="xxx-info-block">
                             <div class="start-block">
                                 <div class="start-block-title">Репозитории</div>
-                                <div class="subtitle">{{ user.counts.repos }}</div>
+                                <div class="subtitle" style="color: rgb(0, 255, 149);">{{ user.counts.repos }}</div>
 
                             </div>
                             <div class="middle-block">
                                 <div class="middle-block-title">Проекты</div>
-                                <div class="subtitle">{{ user.counts.projects }}</div>
+                                <div class="subtitle" style="color: rgb(217, 255, 0);">{{ user.counts.projects }}</div>
 
                             </div>
                             <div class="end-block">
                                 <div class="end-block-title">Отзывы</div>
-                                <div class="subtitle">{{ user.counts.reviews }}</div>
+                                <div class="subtitle" style="color: rgb(0, 247, 255);">{{ user.counts.reviews }}</div>
                             </div>
                         </div>
 
@@ -328,6 +328,7 @@ const isActive = ref(false);
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    // border: 1px solid #535353;
 }
 
 .abstract-block .inner-block {
@@ -344,6 +345,7 @@ const isActive = ref(false);
     justify-content: center;
     flex-direction: column;
     background-color: rgba($color: #000000, $alpha: .5);
+    border: 1px solid #535353;
     border-radius: 15px;
     padding: 10px 20px;
 }
@@ -415,6 +417,7 @@ const isActive = ref(false);
     justify-content: center;
     position: relative;
     flex-direction: column;
+    border: 1px solid #535353;
 }
 
 .start-block-title {}
@@ -429,7 +432,7 @@ const isActive = ref(false);
     justify-content: center;
     position: relative;
     flex-direction: column;
-
+    border: 1px solid #535353;
 }
 
 .middle-block-title {}
@@ -444,7 +447,7 @@ const isActive = ref(false);
     justify-content: center;
     position: relative;
     flex-direction: column;
-
+    border: 1px solid #535353;
 }
 
 .end-block-title {}
@@ -465,10 +468,10 @@ const isActive = ref(false);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 12px;
+    font-size: 14px;
     letter-spacing: 0px;
     color: #ffffff;
-    background-color: rgba($color: #000000, $alpha: .5);
+    background-color: rgba($color: #20ff90, $alpha: .5);
     border-radius: 10px;
 }
 </style>

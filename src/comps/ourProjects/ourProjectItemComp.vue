@@ -22,8 +22,8 @@
                 <h2 class="tech-block__title">Используемые технологии</h2>
                 <!-- Используемые технологии -->
                 <div class="tech-block__items">
-                    <v-chip :density="'comfortable'" color="white" v-for="(item, index) in techItems" :key="index" class="mx-2 my-2"></v-chip>
-                    <v-chip :density="'comfortable'" color="white" v-for="(item, index) in props.projectData?.technologies" :key="index">
+                    <!-- <v-chip :density="'comfortable'" color="white" v-for="(item, index) in techItems" :key="index" class="mx-2 my-2"></v-chip> -->
+                    <v-chip class="mx-2 my-2" :density="'comfortable'" color="white" v-for="(item, index) in props.projectData?.technologies" :key="index">
                         {{ item }}
                     </v-chip>
                 </div>
@@ -88,7 +88,7 @@ const props = defineProps({
 });
 
 const currentSlide = ref(0);
-const techItems = ref(['JavaScript', 'Vue3', 'TypeScript', 'Vuetify', 'Webpack', 'JavaScript', 'Vue3', 'TypeScript', 'Vuetify', 'Webpack'])
+// const techItems = ref(['JavaScript', 'Vue3', 'TypeScript', 'Vuetify', 'Webpack', 'JavaScript', 'Vue3', 'TypeScript', 'Vuetify', 'Webpack'])
 
 function updatePagination(indexSlide) {
     currentSlide.value = indexSlide;
