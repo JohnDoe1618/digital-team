@@ -34,7 +34,7 @@ export default class ApiFirebase {
         const docRef = await addDoc(collection(db, this.collectionRef), data);
         console.debug("Document written with ID: ", docRef.id);
         if(docRef.id) {
-            return true;
+            return docRef;
         } else {
             return false;
         }

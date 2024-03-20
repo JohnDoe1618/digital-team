@@ -11,7 +11,7 @@ import * as icons from '@mdi/font/css/materialdesignicons.css';
 import * as components from 'vuetify/components';
 import * as directives from 'vuetify/directives';
 
-const {db, storage} = run();
+const { db, storage } = run();
 
 const vuetify = createVuetify({
     components,
@@ -20,14 +20,14 @@ const vuetify = createVuetify({
 })
 
 // Регестрируем глобально
-const app = createApp(App).mixin({
+const __app__ = createApp(App).mixin({
     beforeCreate() {
-        this.$db = db;
-        this.$storage = storage;
+        this.__$db__ = db;
+        this.__$storage__ = storage;
     }
 })
 
-app
+__app__
     .use(router)
     .use(vuetify)
     .mount('#app');

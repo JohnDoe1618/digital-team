@@ -1,0 +1,19 @@
+@use "sass:map";
+
+$active-elements-colors: (
+  "success": #28a745,
+  "info": #17a2b8,
+  "warning": #ffc107,
+  "error": #c42020,
+  "default": #616161,
+);
+
+$dark-base-color: #000000;
+$dark-primary-color: #111111;
+$dark-second-color: #181818;
+$dark-primary-text-color: #fff;
+$dark-secondary-text-color: #747474;
+$dark-hover-effect-color: #00ff73;
+$dark-window-glass-color:  #131313;
+$dark-primary-border-color: #ffffff;
+$dark-second-border-color: #c4c4c4;

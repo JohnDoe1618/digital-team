@@ -3,56 +3,102 @@
         <!-- Форма оформления сделки -->
         <v-form class="form-deal">
             <h1 class="form-deal__title">Оформление сделки</h1>
-            <div class="form-deal__top-block">
-                <div class="form-deal__input-block">
-                    <!-- Выбор вида услуги -->
-                    <v-select 
-                    chips 
-                    clearable
-                    label="Выберите вид услуги"
-                    base-color="white" 
-                    color="white"
-                    bg-color="rgb(120, 120, 120)"
-                    theme="dark"
-                    :items="serviceItems"
-                    variant="outlined"
-                    :density="'comfortable'"
+
+            <!-- Ввод учетных данных -->
+            <v-row no-gutters>
+                <!-- Ваше имя -->
+                <v-col cols="12" sm="4">
+                    <v-text-field
+                        v-model="user.firstName"
+                        variant="outlined"
+                        density="compact"
+                        label="Ваше имя"
+                        base-color="white" 
+                        color="white"
+                        bg-color="#181818"
+                        required
+                    ></v-text-field>
+                </v-col>
+                <!-- Телефон -->
+                <v-col cols="12" sm="4">
+                    <v-text-field
+                        v-model="user.phone"
+                        variant="outlined"
+                        :density="'compact'" 
+                        label="Телефон"
+                        base-color="white" 
+                        color="white"
+                        bg-color="#181818"
+                        required
+                    ></v-text-field>
+                </v-col>
+                <!-- E-mail -->
+                <v-col cols="12" sm="4">
+                    <v-text-field
+                        v-model="user.email"
+                        variant="outlined"
+                        :density="'compact'"
+                        label="E-mail"
+                        base-color="white" 
+                        color="white"
+                        bg-color="#181818"
+                        required
+                    ></v-text-field>
+                </v-col>
+            </v-row>
+
+            <v-row no-gutters>
+                <!-- Выбор вида услуги -->
+                <v-col cols="12" sm="6">
+                    <v-select
+                        v-model="deliveryProject.view"
+                        chips
+                        clearable
+                        label="Выберите вид услуги"
+                        base-color="white" 
+                        color="white"
+                        bg-color="#181818"
+                        theme="dark"
+                        :items="serviceItems"
+                        variant="outlined"
+                        density="compact"
+                        required
                     ></v-select>
-                </div>
-                <div class="form-deal__input-block">
+                </v-col>
                     <!-- Бюджет проекта -->
-                    <v-select 
+                <v-col cols="12" sm="6">
+                    <v-select
+                    v-model="deliveryProject.cost"
                     chips 
                     clearable
                     label="Выберите бюджет проекта"
                     base-color="white" 
                     color="white"
-                    bg-color="rgb(120, 120, 120)"
+                    bg-color="#181818"
                     theme="dark"
                     :items="serviceBudget"
                     variant="outlined"
-                    :density="'comfortable'"
+                    density="compact"
+                    required
                     ></v-select>
-                </div>
-            </div>
-            <v-divider color="white"></v-divider>
+                </v-col>
+
+            </v-row>
 
             <!-- Описание проекта -->
-            <div class="form-deal__middle-block">
+            <div>
                 <v-textarea
-                    v-model="description"
+                    v-model="deliveryProject.description"
                     label="Введите описание проекта"
                     base-color="rgb(120, 120, 120)"
                     color="white"
-                    bg-color="rgb(120, 120, 120)"
+                    bg-color="#181818"
                     :no-resize="true"
                     rows="5"
                     :rules="rulesDescription"
                     variant="outlined"
+                    required
                 >
-                    <template v-slot:details>
-                        <p :style="(description.length <= 1000)? {color: 'white'} : {color: 'red'}">{{ description.length }}/1000</p>
-                    </template>
                 </v-textarea>
 
                 <!-- Ввод файлов -->
@@ -75,54 +121,22 @@
                         v-show="false"  
                         id="deal-file-input" 
                         type="file"
+                        ref="fileInputRef"
                     />
                 </div>
-
-                <!-- Ввод учетных данных -->
             </div>
-            <div class="form-deal__bottom-block">
-                <div class="bottom-block__input-block">
-                    <!-- Ваше имя -->
-                    <v-text-field
-                        class="ma-1"
-                        variant="outlined"
-                        :density="'compact'"
-                        label="Ваше имя"
-                        base-color="white" 
-                        color="white"
-                        bg-color="rgb(120, 120, 120)"
-                    ></v-text-field>
-
-                    <!-- Телефон -->
-                    <v-text-field
-                        class="ma-1"
-                        variant="outlined"
-                        :density="'compact'" 
-                        label="Телефон"
-                        base-color="white" 
-                        color="white"
-                        bg-color="rgb(120, 120, 120)"
-                    ></v-text-field>
-
-                    <!-- E-mail -->
-                    <v-text-field
-                        class="ma-1"
-                        variant="outlined"
-                        :density="'compact'"
-                        label="E-mail"
-                        base-color="white" 
-                        color="white"
-                        bg-color="rgb(120, 120, 120)"
-                    ></v-text-field>
-                </div>
-                <!-- Кнопка отправки формы -->
-                <v-btn
-                    class="my-8 ml-auto"
-                    base-color="white" 
-                    color="rgb(120, 120, 120)"
-                    bg-color="rgb(120, 120, 120)"
-                >Отправить</v-btn>
-            </div>
+            <!-- Кнопка отправки формы -->
+            <v-row no-gutters>
+                <v-col cols="12" sm="10"></v-col>
+                <v-col cols="12" sm="2">
+                    <v-btn
+                        base-color="white"
+                        color="#28a745"
+                        bg-color="#181818"
+                        @click.prevent="send()"
+                    >Отправить</v-btn>
+                </v-col>
+            </v-row>
 
         </v-form>
     </v-card>
@@ -130,10 +144,36 @@
 
 <script setup>
 import { ref } from 'vue';
+import ApiFirebase from '@/api/database';
+import { Timestamp } from "firebase/firestore"; 
+
+const apiDeliveryProject = new ApiFirebase("delivery-project");
+// const apiUser = new ApiFirebase("contracts");
 
 const inputFile = ref(null);
-const description = ref('');
 const rulesDescription = [v => v.length <= 1000 || 'Вы превысили лимит в 1000 символов'];
+
+const user = ref({
+    firstName: null,
+    lastName: null,
+    surName: null,
+    phone: null,
+    email: null,
+})
+
+const deliveryProject = ref({
+    view: null,
+    cost: null,
+    description: "",
+    file: {
+        name: null,
+        url: null,
+        ext: null,
+        size: null,
+    },
+    atCreated: null,
+    atUpdated: null,
+})
 
 const serviceItems = ref([
     "Сайт под ключ",
@@ -153,33 +193,41 @@ const serviceBudget = ref([
 ])
 
 function handlerFileInput(e) {
-    console.log();
-    if(e.target.files[0] !== undefined) {
+    if(!e.target.files[0]) {
         inputFile.value = e.target.files[0];
     } else {
         inputFile.value = null;
     }
 }
 
+async function send() {
+    if(apiDeliveryProject.collectionRef === "delivery-project") {
+        const result = await apiDeliveryProject.addDocument(Object.assign({}, deliveryProject.value, {
+            atCreated: Timestamp.fromDate(new Date()),
+            atUpdated: Timestamp.fromDate(new Date()),
+        }));
+        console.log(result);
+    }
+}
+
 </script>
 
-<style scoped>
-
+<style lang="scss" scoped>
 .form-deal__container {
     width: 50%;
     height: max-content;
     margin: auto;
-    background-color: rgba(54, 54, 54, 0.781);
     backdrop-filter: blur(4px);
-    padding: 15px;
+    padding: 25px;
+    background-color: rgba($dark-window-glass-color, .78);
 }
 
 .form-deal__title {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 2rem;
-    color: white;
+    font-size: 1.5rem;
+    color: #c2c2c2;
     font-weight: 400;
     font-family: 'Lato', monospace;
 }
@@ -189,10 +237,7 @@ function handlerFileInput(e) {
     margin-top: 1rem;
     display: flex;
 }
-.form-deal__middle-block {
-    margin-top: 1rem;
-    padding: 0 2rem;
-}
+
 .middle-block__file-input-block {
     padding: 15px 0px;
     margin-top: 1rem;
@@ -201,8 +246,8 @@ function handlerFileInput(e) {
     position: relative;
     width: max-content;
     background-image: url("data:image/svg+xml,%3csvg width='100%' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%' height='100%25' fill='none' stroke='%23ccc' stroke-width='3' stroke-dasharray='6%2c 14' stroke-dashoffset='0' stroke-linecap='square'/%3e%3c/svg%3e");
-    padding: 20px 30px;
-    width: 500px;
+    padding: 15px 20px;
+    width: 400px;
     color: white;
     cursor: pointer;
     transition: color 0.4s ease;

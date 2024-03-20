@@ -196,7 +196,7 @@ function changePage(number) {
 }
 
 .navigation-links .nav-link:hover {
-    color: rgb(0, 255, 115);
+    color: #00ff73;
     cursor: pointer;
 }
 
