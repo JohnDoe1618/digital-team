@@ -2,20 +2,18 @@
     <v-card class="form-deal__container">
         <!-- Форма оформления сделки -->
         <v-form class="form-deal">
-            <h1 class="form-deal__title">Оформление сделки</h1>
+            <h1 class="form-deal__title" style="margin-bottom: 30px;">Оформление сделки</h1>
 
             <!-- Ввод учетных данных -->
-            <v-row no-gutters>
+            <v-row >
                 <!-- Ваше имя -->
                 <v-col cols="12" sm="4">
                     <v-text-field
+                        class="input_fields"
                         v-model="user.firstName"
                         variant="outlined"
                         density="compact"
                         label="Ваше имя"
-                        base-color="white" 
-                        color="white"
-                        bg-color="#181818"
                         required
                     ></v-text-field>
                 </v-col>
@@ -26,9 +24,7 @@
                         variant="outlined"
                         :density="'compact'" 
                         label="Телефон"
-                        base-color="white" 
-                        color="white"
-                        bg-color="#181818"
+                        class="input_fields"
                         required
                     ></v-text-field>
                 </v-col>
@@ -39,15 +35,13 @@
                         variant="outlined"
                         :density="'compact'"
                         label="E-mail"
-                        base-color="white" 
-                        color="white"
-                        bg-color="#181818"
+                        class="input_fields"
                         required
                     ></v-text-field>
                 </v-col>
             </v-row>
 
-            <v-row no-gutters>
+            <v-row >
                 <!-- Выбор вида услуги -->
                 <v-col cols="12" sm="6">
                     <v-select
@@ -55,10 +49,8 @@
                         chips
                         clearable
                         label="Выберите вид услуги"
-                        base-color="white" 
-                        color="white"
-                        bg-color="#181818"
-                        theme="dark"
+                        class="input_fields"
+                        theme="light"
                         :items="serviceItems"
                         variant="outlined"
                         density="compact"
@@ -72,10 +64,8 @@
                     chips 
                     clearable
                     label="Выберите бюджет проекта"
-                    base-color="white" 
-                    color="white"
-                    bg-color="#181818"
-                    theme="dark"
+                    class="input_fields"
+                    theme="light"
                     :items="serviceBudget"
                     variant="outlined"
                     density="compact"
@@ -90,9 +80,7 @@
                 <v-textarea
                     v-model="deliveryProject.description"
                     label="Введите описание проекта"
-                    base-color="rgb(120, 120, 120)"
-                    color="white"
-                    bg-color="#181818"
+                    class="input_fields"
                     :no-resize="true"
                     rows="5"
                     :rules="rulesDescription"
@@ -121,7 +109,6 @@
                         v-show="false"  
                         id="deal-file-input" 
                         type="file"
-                        ref="fileInputRef"
                     />
                 </div>
             </div>
@@ -130,9 +117,7 @@
                 <v-col cols="12" sm="10"></v-col>
                 <v-col cols="12" sm="2">
                     <v-btn
-                        base-color="white"
-                        color="#28a745"
-                        bg-color="#181818"
+                        class="input_fields"
                         @click.prevent="send()"
                     >Отправить</v-btn>
                 </v-col>
@@ -145,10 +130,14 @@
 <script setup>
 import { ref } from 'vue';
 import ApiFirebase from '@/api/database';
-import { Timestamp } from "firebase/firestore"; 
+import FirebaseStorage from '@/api/storage';
+import { v4 as uuidv4 } from 'uuid';
 
-const apiDeliveryProject = new ApiFirebase("delivery-project");
-// const apiUser = new ApiFirebase("contracts");
+const apiUser = new ApiFirebase("users");
+const apiDeliveryProject = new ApiFirebase("order-projects");
+const apiDeliveryFiles = new ApiFirebase("order-files");
+const apiGeneralDocument = new ApiFirebase("users-order_projects-order_files")
+const apiDeliveryProjectFile = new FirebaseStorage();
 
 const inputFile = ref(null);
 const rulesDescription = [v => v.length <= 1000 || 'Вы превысили лимит в 1000 символов'];
@@ -159,6 +148,8 @@ const user = ref({
     surName: null,
     phone: null,
     email: null,
+    atCreated: null,
+    atUpdated: null,
 })
 
 const deliveryProject = ref({
@@ -193,20 +184,37 @@ const serviceBudget = ref([
 ])
 
 function handlerFileInput(e) {
-    if(!e.target.files[0]) {
+    !e.target.files[0] ?
+        inputFile.value = null :
         inputFile.value = e.target.files[0];
-    } else {
-        inputFile.value = null;
-    }
 }
 
+// Отправка заявки на проект в firebase
 async function send() {
-    if(apiDeliveryProject.collectionRef === "delivery-project") {
-        const result = await apiDeliveryProject.addDocument(Object.assign({}, deliveryProject.value, {
-            atCreated: Timestamp.fromDate(new Date()),
-            atUpdated: Timestamp.fromDate(new Date()),
-        }));
-        console.log(result);
+    if(apiDeliveryProject.collectionRef === "order-projects") {
+        const _user = await apiUser.addDocument(user.value);
+        if(_user) {
+            const _project = await apiDeliveryProject.addDocument(deliveryProject.value);
+            if(_project) {
+                if(inputFile.value) {
+                    apiDeliveryProjectFile.uploadFileWithProgress(inputFile.value, "order-files/{*}".replace('{*}', `${uuidv4()}-${inputFile.value.name}`),
+                    (progress) => {
+                        console.log(progress)
+                    },
+                    async (url, ref) => {
+                        const _file = await apiDeliveryFiles.addDocument({ url: url, name: ref.name, fullPath: ref.fullPath });
+                        if(_file) {
+                            const _general = await apiGeneralDocument.addDocument({
+                                userId: _user.id,
+                                orderProjectId: _project.id,
+                                orderFileId: _file.id,
+                            })
+                            console.log(_general)
+                        }
+                    });
+                }
+            }
+        }
     }
 }
 
@@ -219,7 +227,12 @@ async function send() {
     margin: auto;
     backdrop-filter: blur(4px);
     padding: 25px;
-    background-color: rgba($dark-window-glass-color, .78);
+    // background-color: rgba($light-base-color, .78);
+}
+
+.input_fields {
+    color: $light-primary-text-color;
+    background-color: $light-base-color;
 }
 
 .form-deal__title {
@@ -227,7 +240,7 @@ async function send() {
     justify-content: center;
     align-items: center;
     font-size: 1.5rem;
-    color: #c2c2c2;
+    color: $light-primary-text-color;
     font-weight: 400;
     font-family: 'Lato', monospace;
 }
@@ -248,13 +261,13 @@ async function send() {
     background-image: url("data:image/svg+xml,%3csvg width='100%' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%' height='100%25' fill='none' stroke='%23ccc' stroke-width='3' stroke-dasharray='6%2c 14' stroke-dashoffset='0' stroke-linecap='square'/%3e%3c/svg%3e");
     padding: 15px 20px;
     width: 400px;
-    color: white;
+    color: $light-primary-text-color;
     cursor: pointer;
     transition: color 0.4s ease;
 }
 .file-input:hover {
     transition: color 0.4s ease;
-    color: rgb(197, 197, 197);
+    color: $light-primary-color;
 }
 .file-input-hint {
     position: relative;

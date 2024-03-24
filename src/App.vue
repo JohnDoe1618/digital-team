@@ -1,51 +1,54 @@
 <template>
-    <div class="section" @wheel="handleScroll">
-        <div class="header">
-            <div class="navigation-links">
-                <h4>
-                    DA .inc
-                </h4>
-                <div class="nav-link-about nav-link" @click="changePage(0)">О компании</div>
-                <div class="nav-link-about nav-link" @click="changePage(1)">Разработчики</div>
-                <div class="nav-link-about nav-link" @click="changePage(2)">Проекты</div>
-                <div class="nav-link-about nav-link" @click="changePage(3)">Контакты</div>
-                <div class="nav-link-about nav-link" @click="changePage(4)">Информация</div>
+    <v-app>
+            <div class="section" @wheel="handleScroll">
+                <div class="header">
+                    <navigationMenu></navigationMenu>
+                    <div class="navigation-links">
+                        <h4>
+                            DA .inc
+                        </h4>
+                        <div class="nav-link-about nav-link" @click="changePage(0)">О компании</div>
+                        <div class="nav-link-about nav-link" @click="changePage(1)">Разработчики</div>
+                        <div class="nav-link-about nav-link" @click="changePage(2)">Проекты</div>
+                        <div class="nav-link-about nav-link" @click="changePage(3)">Контакты</div>
+                        <div class="nav-link-about nav-link" @click="changePage(4)">Информация</div>
+                    </div>
+                </div>
+        
+                <div style="height: 100vh; overflow-y: scroll;">
+                    <transition>
+                        <AboutUsComp v-if="showAboutUsComp" />
+                    </transition>
+        
+                    <transition>
+                        <DevelopersComp v-if="showDevelopersComp" />
+                    </transition>
+        
+                    <transition>
+                        <OurProjectsComp v-if="showOurProjectsComp" />
+                    </transition>
+        
+                    <transition>
+                        <ContactWithUsComp v-if="showContactWithUsComp" />
+                    </transition>
+        
+                    <transition>
+                        <FooterInfoComp v-if="showFooterInfoComp" />
+                    </transition>
+                    
+                </div>
+        
+                <div class="navigation-panel-left">
+                    <div class="dots">
+                        <div class="dot" :style="showAboutUsComp ? {'background-color': 'rgb(0, 195, 255)'} : null"></div>
+                        <div class="dot" :style="showDevelopersComp ? {'background-color': 'rgb(0, 195, 255)'} : null"></div>
+                        <div class="dot" :style="showOurProjectsComp ? {'background-color': 'rgb(0, 195, 255)'} : null"></div>
+                        <div class="dot" :style="showContactWithUsComp ? {'background-color': 'rgb(0, 195, 255)'} : null"></div>
+                        <div class="dot" :style="showFooterInfoComp ? {'background-color': 'rgb(0, 195, 255)'} : null"></div>
+                    </div>
+                </div>
             </div>
-        </div>
-
-        <div style="height: 100vh; overflow-y: scroll;">
-            <transition>
-                <AboutUsComp v-if="showAboutUsComp" />
-            </transition>
-
-            <transition>
-                <DevelopersComp v-if="showDevelopersComp" />
-            </transition>
-
-            <transition>
-                <OurProjectsComp v-if="showOurProjectsComp" />
-            </transition>
-
-            <transition>
-                <ContactWithUsComp v-if="showContactWithUsComp" />
-            </transition>
-
-            <transition>
-                <FooterInfoComp v-if="showFooterInfoComp" />
-            </transition>
-            
-        </div>
-
-        <div class="navigation-panel-left">
-            <div class="dots">
-                <div class="dot" :style="showAboutUsComp ? {'background-color': 'rgb(0, 195, 255)'} : null"></div>
-                <div class="dot" :style="showDevelopersComp ? {'background-color': 'rgb(0, 195, 255)'} : null"></div>
-                <div class="dot" :style="showOurProjectsComp ? {'background-color': 'rgb(0, 195, 255)'} : null"></div>
-                <div class="dot" :style="showContactWithUsComp ? {'background-color': 'rgb(0, 195, 255)'} : null"></div>
-                <div class="dot" :style="showFooterInfoComp ? {'background-color': 'rgb(0, 195, 255)'} : null"></div>
-            </div>
-        </div>
-    </div>
+    </v-app>
 </template>
 
 <script setup>
@@ -58,11 +61,12 @@ import DevelopersComp from './comps/DevelopersComp.vue';
 import OurProjectsComp from './comps/OurProjectsComp.vue';
 import ContactWithUsComp from './comps/ContactWithUsComp.vue';
 import FooterInfoComp from './comps/FooterInfoComp.vue';
+import navigationMenu from './comps/navMenu/navigationMenu.vue';
 
 
-const showAboutUsComp = ref(false);
+const showAboutUsComp = ref(true);
 const showDevelopersComp = ref(false);
-const showOurProjectsComp = ref(true);
+const showOurProjectsComp = ref(false);
 const showContactWithUsComp = ref(false);
 const showFooterInfoComp = ref(false);
 
@@ -141,9 +145,9 @@ function changePage(number) {
 }
 </script>
 
-<style lang="css">
+<style lang="scss">
 #app {
-    background-color: black;
+    background-color: $light-base-color;
 }
 * {
     padding: 0;
@@ -165,7 +169,7 @@ function changePage(number) {
     align-items: center;
     font-size: 35px;
     text-align: center;
-    color: white;
+    color: $light-primary-text-color;
     font-weight: bold;
     display: flex;
     z-index: 2;
@@ -180,7 +184,7 @@ function changePage(number) {
     margin-left: auto;
     z-index: 2;
     padding: 10px 20px;
-    border-bottom: 1px solid #616161;
+    border-bottom: 1px solid #c4c4c4;
 }
 
 .navigation-links h4 {
@@ -190,7 +194,7 @@ function changePage(number) {
 
 .navigation-links .nav-link {
     font-size: 16px;
-    color: rgb(255, 255, 255);
+    color: $light-primary-text-color;
     border-radius: 5px;
     margin-left: 20px;
 }
@@ -226,7 +230,7 @@ function changePage(number) {
     width: 15px;
     height: 15px;
     border-radius: 50%;
-    background-color: rgb(255, 255, 255);
+    background-color: rgb(168, 168, 168);
     cursor: pointer;
     margin-top: 25px;
 }

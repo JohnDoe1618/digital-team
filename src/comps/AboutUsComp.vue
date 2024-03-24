@@ -73,12 +73,12 @@ const dialogDeal = ref(false);
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    color: #fff;
+    color: $light-primary-text-color;
     font-size: 86px;
     font-family: 'Fira Mono', monospace;
     letter-spacing: -7px;
     z-index: 1;
-    background-color: rgba($color: #000000, $alpha: .2);
+    // background-color: rgba($color: #000000, $alpha: .2);
 }
 
 .button-container {
@@ -96,11 +96,16 @@ const dialogDeal = ref(false);
     border-radius: 10px;
     position: relative;
     padding: 10px 25px;
-    border: 1px solid #fff;
+    border: 1px solid #afafaf;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
+    color: $light-primary-text-color;
+}
+
+.button h3 {
+    color: $light-primary-text-color;
 }
 
 .icon-github {
@@ -109,20 +114,20 @@ const dialogDeal = ref(false);
 }
 
 .button:hover {
-    background-color: #fff;
-    color: #000;
+    background-color: $light-base-color;
+    color: $light-primary-text-color;
     cursor: pointer;
-    border: 1px solid #000;
+    border: 1px solid $light-primary-text-color;
     transition: all 0.3s ease;
 }
 
 .button a {
-    color: white;
+    color: $light-primary-text-color;
 }
 
 .button a:hover {
-    background-color: #fff;
-    color: #000;
+    background-color: $light-base-color;
+    color: $light-primary-text-color;
     cursor: pointer;
     transition: all 0.3s ease;
 }
@@ -146,7 +151,7 @@ const dialogDeal = ref(false);
 
 .subtitle {
     font-size: 30px;
-    color: white;
+    color: $light-primary-text-color;
     letter-spacing: -2px;
 }
 
