@@ -14,11 +14,10 @@ export const firebaseConfig = {
 
 
 export const run = () => {
-    console.debug('[FIREBASE] - Start Running')
+    console.debug('[FIREBASE] - INSERT SUCCESSFULY')
     const appBase = initializeApp(firebaseConfig);
     const db = getFirestore(appBase);
     const storage = getStorage(appBase)
-    console.debug('[FIREBASE] - End Running')
     return {
         db,
         storage

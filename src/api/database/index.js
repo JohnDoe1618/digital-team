@@ -1,5 +1,5 @@
 import { db } from "@/main"
-import {doc, getDoc, collection, getDocs, query, where, addDoc, updateDoc, arrayUnion, arrayRemove, deleteDoc, increment } from "firebase/firestore"; 
+import {doc, getDoc, collection, getDocs, query, where, addDoc, updateDoc, arrayUnion, arrayRemove, deleteDoc, increment, Timestamp } from "firebase/firestore"; 
 import { developerConverter } from "./converters";
 
 export default class ApiFirebase {
@@ -31,7 +31,10 @@ export default class ApiFirebase {
 
     // 2. Записать новый документ:
     async addDocument(data) {
-        const docRef = await addDoc(collection(db, this.collectionRef), data);
+        const docRef = await addDoc(collection(db, this.collectionRef), Object.assign({}, data, {
+            atCreated: Timestamp.fromDate(new Date()),
+            atUpdated: Timestamp.fromDate(new Date()),
+        }));
         console.debug("Document written with ID: ", docRef.id);
         if(docRef.id) {
             return docRef;
