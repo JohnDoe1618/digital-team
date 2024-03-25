@@ -226,7 +226,7 @@ async function send() {
     height: max-content;
     margin: auto;
     backdrop-filter: blur(4px);
-    padding: 25px;
+    padding: 50px;
     // background-color: rgba($light-base-color, .78);
 }
 

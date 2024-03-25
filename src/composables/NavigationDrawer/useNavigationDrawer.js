@@ -9,12 +9,13 @@ export function useNavigationDrawer() {
   });
 
   const navList = [
-    { id: "1", value: "1", title: "Главная", icon: "documents.png" },
-    { id: "2", value: "2", title: "Заявки", icon: "archive.png" },
-    { id: "3", value: "3", title: "Чаты", icon: "favorites.png" },
-    { id: "4", value: "4", title: "Сделки", icon: "trash.png" },
-    { id: "5", value: "5", title: "Проекты/статистика", icon: "settings.png" },
-    { id: "6", value: "6", title: "Настройки", icon: "protect.png" },
+    { id: "1", value: "1", title: "Главная", icon: "dashboard.png" },
+    { id: "2", value: "2", title: "Заявки", icon: "requests.png" },
+    { id: "3", value: "3", title: "Чаты", icon: "chats.png" },
+    { id: "4", value: "4", title: "Сделки", icon: "contracts.png" },
+    { id: "5", value: "5", title: "Проекты", icon: "projects.png" },
+    { id: "5", value: "5", title: "Команда", icon: "developers.png" },
+    { id: "6", value: "6", title: "Настройки", icon: "settings_.png" },
   ];
 
   return {
