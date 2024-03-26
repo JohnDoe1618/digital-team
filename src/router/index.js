@@ -1,11 +1,11 @@
-import AboutUsComp from '@/pages/AboutUsComp.vue';
+import MainPage from '@/pages/MainPage.vue';
 import { createRouter, createWebHistory } from 'vue-router'
 
 const routes = [
     {
         path: "/",
         name: "home",
-        component: AboutUsComp,
+        component: MainPage,
     },
 ];
 

@@ -1,5 +1,6 @@
 <template>
     <v-card
+    variant="text"
     >
         <v-toolbar
             dense
