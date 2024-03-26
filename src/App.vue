@@ -1,8 +1,8 @@
 <template>
-    <v-app>
+    <v-app id="app">
         <header-comp></header-comp>
         <navigationMenu></navigationMenu>
-        <v-main>
+        <v-main style="padding: 0;">
             <router-view></router-view>
         </v-main>
     </v-app>
@@ -17,5 +17,12 @@ import HeaderComp from './comps/header/HeaderComp.vue';
 <style lang="scss">
 #app {
     background-color: $light-base-color;
+}
+
+*
+{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
 }
 </style>
