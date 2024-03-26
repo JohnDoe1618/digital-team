@@ -14,8 +14,8 @@ export function useNavigationDrawer() {
     { id: "3", value: "3", title: "Чаты", icon: "chats.png" },
     { id: "4", value: "4", title: "Сделки", icon: "contracts.png" },
     { id: "5", value: "5", title: "Проекты", icon: "projects.png" },
-    { id: "5", value: "5", title: "Команда", icon: "developers.png" },
-    { id: "6", value: "6", title: "Настройки", icon: "settings_.png" },
+    { id: "6", value: "6", title: "Команда", icon: "developers.png" },
+    { id: "7", value: "7", title: "Настройки", icon: "settings_.png" },
   ];
 
   return {

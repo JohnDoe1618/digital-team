@@ -83,7 +83,7 @@
                                 <i class="fi fi-rr-expense"></i>
                             </template>
                             <template v-slot:title>
-                                534
+                                214
                             </template>
 
                             <v-card-text>
@@ -101,7 +101,7 @@
                             </template>
 
                             <template v-slot:title>
-                                1,143
+                                533
                             </template>
 
                             <v-card-text>
@@ -147,6 +147,11 @@
                                         {{ item.sum }}
                                     </v-chip>
                                 </template>
+                                <template v-slot:item.category="{ item }">
+                                    <v-chip :color="'#5E6CE7'">
+                                        {{ item.category }}
+                                    </v-chip>
+                                </template>
                             </v-data-table>
                         </v-card>
                     </v-col>
@@ -183,8 +188,8 @@ const chartData = {
         'December'
     ],
     datasets: [ { 
-        label: 'Данные',
-        backgroundColor: '#f87979',
+        label: 'Статистика сделок',
+        backgroundColor: '#5E6CE7',
         data: [40, 20, 12, 39, 10, 40, 39, 80, 40, 20, 12, 11]
     } ]
 }
@@ -201,13 +206,13 @@ const newClientsData = {
 }
 
 const PieData = {
-  labels: ['Завершенные', 'В процессе', 'Невыполненные', 'Отмененные'],
-  datasets: [
-    {
-      backgroundColor: ['#41B883', '#E46651', '#00D8FF', '#DD1B16'],
-      data: [153, 3, 0, 2]
-    }
-  ]
+    labels: ['Завершенные', 'В процессе', 'Невыполненные', 'Отмененные'],
+    datasets: [
+        {
+        backgroundColor: ['#41B883', '#00D8FF', '#E46651', '#DD1B16'],
+        data: [153, 3, 0, 2]
+        }
+    ]
 }
 
 const chartOptions = {
@@ -239,20 +244,18 @@ const headers = [
 
 const transactions = [
         {
-          name: 'Эрик',
+          name: 'Джон',
           category: 'Разработка',
           project: 'Сайт стомотологии',
           sum: 120_000,
           created_at: '12.03.2024 12:35:51 AM',
-          iron: '15%',
         },
         {
-          name: 'Эрик',
-          category: 'Разработка',
-          project: 'Сайт стомотологии',
+          name: 'Максим',
+          category: 'Дизайн',
+          project: 'Админ панель',
           sum: 45_000,
           created_at: '12.03.2024 12:35:51 AM',
-          iron: '15%',
         },
 ]
 

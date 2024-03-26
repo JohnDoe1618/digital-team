@@ -88,9 +88,12 @@
                     required
                 >
                 </v-textarea>
-
-                <!-- Ввод файлов -->
-                <div class="middle-block__file-input-block">
+            </div>
+            <!-- Кнопка отправки формы -->
+            <v-row no-gutters style="display: flex; align-items: center;">
+                <v-col cols="12" sm="10">
+                    <!-- Ввод файлов -->
+                    <div class="middle-block__file-input-block">
                     <label class="file-input" for="deal-file-input">
                         <v-icon 
                             class="file-input__cancel-btn"
@@ -111,10 +114,7 @@
                         type="file"
                     />
                 </div>
-            </div>
-            <!-- Кнопка отправки формы -->
-            <v-row no-gutters>
-                <v-col cols="12" sm="10"></v-col>
+                </v-col>
                 <v-col cols="12" sm="2">
                     <v-btn
                         class="input_fields"

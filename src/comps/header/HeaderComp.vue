@@ -30,8 +30,8 @@
                 <v-icon>mdi-bell-outline</v-icon>
             </v-badge>
             </v-btn>
-            <v-btn class="ml-5 mr-2" variant="outlined" density="default" @click="dialogDeal = true">
-                Создать
+            <v-btn class="ml-5 mr-2" variant="outlined" density="default" @click="dialogDeal = true" color="#5E6CE7">
+                Оформить сделку
             </v-btn>
         </template>
         </v-toolbar>

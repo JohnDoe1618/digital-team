@@ -71,31 +71,43 @@
   import {
     useNavigationDrawer,
   } from '../../composables/NavigationDrawer/useNavigationDrawer'
+  import { useRouter } from "vue-router";
+
+  const router = useRouter();
+
   const { navList, object_user_data_template } = useNavigationDrawer();
-  
   const selectedItemId = ref("");
   
   function goOtherPage(id) {
     switch (id) {
       case "1":
         selectedItemId.value = id;
+        router.push({name: 'main'})
         break;
       case "2":
         selectedItemId.value = id;
+        router.push({name: 'requests'})
         break;
       case "3":
+        router.push({name: 'chat'})
         selectedItemId.value = id;
         break;
       case "4":
+        router.push({name: 'contract'})
         selectedItemId.value = id;
         break;
       case "5":
+        router.push({name: 'project'})
         selectedItemId.value = id;
         break;
       case "6":
+        router.push({name: 'developers'})
         selectedItemId.value = id;
         break;
       case "7":
+        router.push({name: 'settings'})
+        selectedItemId.value = id;
+        break;
     }
   }
   </script>
