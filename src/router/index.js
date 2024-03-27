@@ -3,6 +3,7 @@ import ContractsPage from '@/pages/ContractsModule/ContractsPage.vue';
 import MainPage from '@/pages/DashboardModule/MainPage.vue';
 import ProjectsPage from '@/pages/ProjectsModule/ProjectsPage.vue';
 import RequestsPage from '@/pages/RequestsModule/RequestsPage.vue';
+import ResultSearchPage from '@/pages/SearchModule/ResultSearchPage.vue';
 import SettingsPage from '@/pages/SettingsModule/SettingsPage.vue';
 import TeamPage from '@/pages/TeamModule/TeamPage.vue';
 import { createRouter, createWebHistory } from 'vue-router'
@@ -43,6 +44,11 @@ const routes = [
         name: "settings",
         component: SettingsPage,
     },
+    {
+        path: "/resultSearching",
+        name: "searchingResult",
+        compoenent: ResultSearchPage,
+    }
 ];
 
 const router = createRouter({

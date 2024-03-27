@@ -17,6 +17,8 @@
                     variant="outlined"
                     density="compact"
                     label="Поиск"
+                    v-model="searchField"
+                    @keyup.enter="handlerSearch"
                 ></v-text-field>
             </v-col>
         </v-row>
@@ -43,7 +45,15 @@
 <script setup>
 import {ref} from 'vue';
 import aboutUsDealComp from '../aboutUsDeal/aboutUsDealComp.vue';
-const dialogDeal = ref(false)
+import { useRouter } from 'vue-router';
+const router = useRouter();
+
+const dialogDeal = ref(false);
+const searchField = ref('');
+
+function handlerSearch() {
+    router.push({name: 'searchingResult'});
+}
 </script>
 <style lang="scss" scoped>
 .header {
