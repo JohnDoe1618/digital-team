@@ -1,137 +1,77 @@
 <template>
-            <v-main class="fill-height">
-                <div class="fill-height py-5 px-8" style="display: flex;">
-                    <v-card class="fill-height py-5 px-5" width="30%" max-height="90vh" style="overflow: auto;" id="section__chats">
-                        <v-list
-                            :items="items"
-                            lines="three"
-                            item-props
-                            >
-                            <template v-slot:subtitle="{ subtitle }">
-                                <div v-html="subtitle"></div>
-                            </template>
-                        </v-list>
-                    </v-card>
+        <v-main  style="height: calc(100vh - 84px);">
+            <div class="fill-height py-5 px-8" style="display: flex;">
 
-                    <div style="display: flex; flex-direction: column; width: 100%; height: 92.3vh;">
-                        <v-card variant="elevated" class="fill-height py-5 px-5" width="100%" style="overflow: auto;">
-                        </v-card>
-                        <v-text-field
-                            v-model="message"
-                            :append-inner-icon="message ? 'mdi-send' : 'mdi-microphone'"
-                            :prepend-icon="icon"
-                            clear-icon="mdi-close-circle"
-                            label="Message"
-                            type="text"
-                            variant="outlined"
-                            clearable
-                            @click:append="sendMessage"
-                            @click:append-inner="sendMessage"
-                            @click:clear="clearMessage"
-                            @click:prepend="changeIcon"
-                        ></v-text-field>
-                    </div>
+                <div class="d-flex" style="height: 100%; width: 30%; overflow: auto;">
+                    <v-list
+                        id="section__chats"
+                        style="overflow: auto;"
+                        >
+                        <v-list-item
+                        v-for="item in items"
+                        :key="item.id"
+                        @click="onOpenChat($event, item)"
+                        :title="item.title"
+                        :subtitle="item.subtitle"
+                        :active="false"
+                        >
+                        <!-- :class="{ 'even-index': getLocalChatId() === item.id }" -->
+                            <template v-slot:prepend>
+                                <img width="32px" height="32px" :src="item.prependAvatar" style="margin-right: 10px;">
+                            </template>
+                        </v-list-item>
+                    </v-list>
                 </div>
-            </v-main>
+
+                <div class="fill-height d-flex px-5 py-5" style="width: 70%;">
+
+                </div>
+            </div>
+        </v-main>
 </template>
 
 <script setup>
-import { computed } from 'vue';
-import {ref} from 'vue';
+import { ref, computed } from 'vue';
+
+const chatLocalId = 'chat:efw90j430'
 const items = ref([
     {
+        id: 0,
         prependAvatar: 'https://cdn.vuetifyjs.com/images/lists/1.jpg',
         title: 'Техническая поддержка',
-        subtitle: `<span class="text-primary">Ответ может занять несколько часов</span>`,
+        subtitle: `Ответ может занять несколько часов`,
     },
-    { type: 'divider', inset: true },
     {
+        id: 1,
         prependAvatar: 'https://cdn.vuetifyjs.com/images/lists/2.jpg',
         title: 'Summer BBQ',
-        subtitle: `<span class="text-primary">to Alex, Scott, Jennifer</span> &mdash; Wish I could come, but I'm out of town this weekend.`,
-    },
-    { type: 'divider', inset: true },
-    {
-        prependAvatar: 'https://cdn.vuetifyjs.com/images/lists/3.jpg',
-        title: 'Oui oui',
-        subtitle: '<span class="text-primary">Sandra Adams</span> &mdash; Do you have Paris recommendations? Have you ever been?',
-    },
-    { type: 'divider', inset: true },
-    {
-        prependAvatar: 'https://cdn.vuetifyjs.com/images/lists/4.jpg',
-        title: 'Birthday gift',
-        subtitle: '<span class="text-primary">Trevor Hansen</span> &mdash; Have any ideas about what we should get Heidi for her birthday?',
-    },
-    { type: 'divider', inset: true },
-    {
-        prependAvatar: 'https://cdn.vuetifyjs.com/images/lists/5.jpg',
-        title: 'Recipe to try',
-        subtitle: '<span class="text-primary">Britta Holt</span> &mdash; We should eat this: Grate, Squash, Corn, and tomatillo Tacos.',
-    },
-    {
-        prependAvatar: 'https://cdn.vuetifyjs.com/images/lists/5.jpg',
-        title: 'Recipe to try',
-        subtitle: '<span class="text-primary">Britta Holt</span> &mdash; We should eat this: Grate, Squash, Corn, and tomatillo Tacos.',
-    },
-    {
-        prependAvatar: 'https://cdn.vuetifyjs.com/images/lists/5.jpg',
-        title: 'Recipe to try',
-        subtitle: '<span class="text-primary">Britta Holt</span> &mdash; We should eat this: Grate, Squash, Corn, and tomatillo Tacos.',
-    },
-    {
-        prependAvatar: 'https://cdn.vuetifyjs.com/images/lists/5.jpg',
-        title: 'Recipe to try',
-        subtitle: '<span class="text-primary">Britta Holt</span> &mdash; We should eat this: Grate, Squash, Corn, and tomatillo Tacos.',
-    },
-    {
-        prependAvatar: 'https://cdn.vuetifyjs.com/images/lists/5.jpg',
-        title: 'Recipe to try',
-        subtitle: '<span class="text-primary">Britta Holt</span> &mdash; We should eat this: Grate, Squash, Corn, and tomatillo Tacos.',
-    },
-    {
-        prependAvatar: 'https://cdn.vuetifyjs.com/images/lists/5.jpg',
-        title: 'Recipe to try',
-        subtitle: '<span class="text-primary">Britta Holt</span> &mdash; We should eat this: Grate, Squash, Corn, and tomatillo Tacos.',
+        subtitle: `Ответ может занять несколько часов`,
     },
 ])
 
-const message = ''
-const marker = true
-const iconIndex = 0
-const icons = [
-    'mdi-emoticon',
-    'mdi-emoticon-cool',
-    'mdi-emoticon-dead',
-    'mdi-emoticon-excited',
-    'mdi-emoticon-happy',
-    'mdi-emoticon-neutral',
-    'mdi-emoticon-sad',
-    'mdi-emoticon-tongue',
-]
-
-function toggleMarker() {
-    this.marker = !this.marker
-}
-function sendMessage () {
-    this.resetIcon()
-    this.clearMessage()
-}
-function clearMessage () {
-    this.message = ''
-}
-function resetIcon () {
-    this.iconIndex = 0
-}
-function changeIcon () {
-    this.iconIndex === this.icons.length - 1
-    ? this.iconIndex = 0
-    : this.iconIndex++
+function saveInLocalStorage(value) {
+    const chatLocal = JSON.parse(localStorage.getItem(chatLocalId))
+    if(chatLocal) {
+        if(value.id === chatLocal.id) {
+            localStorage.removeItem(chatLocalId);
+        }
+    } else {
+        localStorage.setItem(chatLocalId, JSON.stringify(value));
+    }
 }
 
-computed({
-    icon () {
-        return this.icons[this.iconIndex]
-    },
+function onOpenChat(e, value) {
+    console.log(e)
+    saveInLocalStorage(value);
+}
+
+function getLocalChatId() {
+    const chatLocal = localStorage.getItem(chatLocalId);
+    if(!chatLocal) return;
+    return JSON.parse(chatLocal).id;
+}
+const isEvenIndex = computed(() => {
+    return (index) => index % 2 === 0;
 })
 </script>
 
@@ -147,7 +87,11 @@ computed({
 
 #section__chats::-webkit-scrollbar-thumb {
   border-radius: 100px;
-  background-image: linear-gradient(180deg, #d0368a 0%, #708ad4 99%);
+  background-image: linear-gradient(180deg, #c0c0c0 0%, #696969 99%);
   box-shadow: inset 2px 2px 5px 0 rgba(#fff, 0.5);
+}
+
+.even-index {
+    background-color: rgb(53, 181, 255);
 }
 </style>

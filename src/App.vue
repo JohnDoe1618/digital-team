@@ -26,6 +26,7 @@ import HeaderComp from './comps/header/HeaderComp.vue';
     box-sizing: border-box;
 }
 
+
 body::-webkit-scrollbar {
   width: 5px;
 }
